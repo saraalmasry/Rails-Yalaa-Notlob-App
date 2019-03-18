@@ -9,30 +9,41 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
+# online DB info
+
 default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: "01111451253"
-  socket: /var/lib/mysql/mysql.sock
+  username: sql7283860
+  password: aEAVPplD2a
+  socket: 3306
+  host: sql7.freemysqlhosting.net
+  database: sql7283860
+
+
+# Local DB Info
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password:
+#   socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: yallaNotlobApp_development
-  username: root
-  password: "Open_Source_123"
-  host: localhost
+  # database: yalla_development
+  database: sql7283860
+
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: yallaNotlobApp_test
-  username: root
-  password: "Open_Source_123"
-  host: localhost
+  # database: yalla_test
+  database: sql7283860
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -55,6 +66,9 @@ test:
 #
 production:
   <<: *default
-  database: yallaNotlobApp_production
-  username: yallaNotlobApp
-  password: <%= ENV['YALLANOTLOBAPP_DATABASE_PASSWORD'] %>
+  # database: yalla_production
+  database: sql7283860
+  # username: yalla
+  username: sql7283860
+  # password: <%= ENV['YALLA_DATABASE_PASSWORD'] %>
+  password: aEAVPplD2a

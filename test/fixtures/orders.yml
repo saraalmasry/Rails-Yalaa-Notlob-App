@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  mail: MyString
+  restourant: MyString
+  menuImg: MyString
+  status: MyString
+  join: 1
+  user: one
+
+two:
+  mail: MyString
+  restourant: MyString
+  menuImg: MyString
+  status: MyString
+  join: 1
+  user: two
