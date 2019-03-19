@@ -1,0 +1,19 @@
+<div class="container">
+ <h1> Groups </h1>
+ <hr />
+ <div class = "row">
+   <div class = "col-md-12">
+<%= form_tag("/addGroup", method: "post") do %>
+<%= label_tag(:q, "Group:") %>
+<%= text_field_tag(:q) %>
+<%= submit_tag("Add") %>
+  <% end %>
+  </div>
+ </div>
+ <div class = "row">
+  <div class="col-sm-3 myGroups">
+   <h3> My Groups </h3>
+
+  </div>
+ </div>
+</div>
