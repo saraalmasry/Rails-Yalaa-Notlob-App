@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_212653) do
+ActiveRecord::Schema.define(version: 2019_03_19_122001) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
-    t.bigint "myFriend_id"
+    t.bigint "myfriend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["creator_id"], name: "index_friend_ships_on_creator_id"
-    t.index ["myFriend_id"], name: "index_friend_ships_on_myFriend_id"
+    t.index ["myfriend_id"], name: "index_friend_ships_on_myfriend_id"
   end
 
   create_table "group_members", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -59,11 +59,6 @@ ActiveRecord::Schema.define(version: 2019_03_18_212653) do
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
-  create_table "test_dbs", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "user_orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.integer "amount"
     t.string "item"
@@ -84,6 +79,8 @@ ActiveRecord::Schema.define(version: 2019_03_18_212653) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "friend_ships", "users", column: "creator_id"
+  add_foreign_key "friend_ships", "users", column: "myfriend_id"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "notifications", "orders"

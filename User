@@ -1,0 +1,6 @@
+      invoke  active_record
+      create    db/migrate/20190319115136_create_friend_ships.rb
+      create    app/models/friend_ship.rb
+      invoke    test_unit
+      create      test/models/friend_ship_test.rb
+      create      test/fixtures/friend_ships.yml
