@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_21_092445) do
+ActiveRecord::Schema.define(version: 2019_03_21_140547) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -68,6 +67,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_092445) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
     t.index ["order_id"], name: "index_user_orders_on_order_id"
     t.index ["user_id"], name: "index_user_orders_on_user_id"
   end

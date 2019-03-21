@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: "registrations"}
   root 'home#index'
 
-  get 'orders', to: 'orders#index'
+  # get 'orders', to: 'orders#index'
+  # get 'orders/:id', to: 'orders#show' do
+  resources :orders do
+    resources :user_orders
+  end
 
   get 'orders/list'
 

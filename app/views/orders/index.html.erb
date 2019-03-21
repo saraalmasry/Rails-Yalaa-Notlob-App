@@ -39,8 +39,8 @@
             <% @orders.each do |order| %>
               <tr class="table-info">
                 <td>
-                <%= order.user.name %> has created an order
-                <%#= link_to 'show', article_path(article) %>
+                <%= order.user.name %> has created an
+                <%= link_to 'Order', order_path(order) %>
                 for <%= order.meal %>
                 from <%= order.restourant %>
                 </td>
