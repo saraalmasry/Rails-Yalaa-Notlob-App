@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_21_140547) do
+ActiveRecord::Schema.define(version: 2019_03_21_160312) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_03_21_140547) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -78,12 +80,15 @@ ActiveRecord::Schema.define(version: 2019_03_21_140547) do
     t.string "encrypted_password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
   end
 
   add_foreign_key "friend_ships", "users", column: "creator_id"
   add_foreign_key "friend_ships", "users", column: "myfriend_id"
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
+  add_foreign_key "groups", "users"
   add_foreign_key "notifications", "orders"
   add_foreign_key "notifications", "users"
   add_foreign_key "orders", "users"

@@ -3,10 +3,10 @@
  <hr />
  <div class = "row">
    <div class = "col-md-12">
-<%= form_tag("/addGroup", method: "post") do %>
-<%= label_tag(:q, "Group:") %>
-<%= text_field_tag(:q) %>
-<%= submit_tag("Add") %>
+<%=  form_with scope: :group , url: groups_path do |form| %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+<%= form.submit("Add") %>
   <% end %>
   </div>
  </div>
@@ -15,16 +15,19 @@
   <div class="col-sm-3 myGroups">
    <h3> My Groups </h3>
        <ul>
+      <% @groups.each do |group| %>
        <li>
-       <span>OS</span>
+         <%= link_to group.name , :id => group.id %>
        <i class="fas fa-times fa-2x"> </i>
        <i class="fas fa-user-plus fa-2x"></i>
        </li>
+       <hr />
+        <% end %>
        </ul>
   </div>
 
 <div class="col-sm-9 groupMembers">
-     <h3> Group Name </h3>
+     <h3> <%= @groupDetail.name %> </h3>
   <div class="container">
 
    <div class="row">
@@ -38,15 +41,20 @@
     </div>
 
     <div class="row">
+      <% @members.each do |member| %>
+
+
      <div class="col-sm-6">
        <div class="card" style="width: 18rem;">
   <%=image_tag "user.png" ,  style: 'height:50%'%>
   <div class="card-body">
-    <h5 class="card-title">Friend Name</h5>
-    <a href="#" class="btn btn-primary">un friend</a>
+    <h5 class="card-title"><%= member.name %></h5>
+    <a href="#" class="btn btn-primary">unfriend</a>
   </div>
 </div>
      </div>
+
+     <% end %>
     </div>
   </div>
 </div>
@@ -55,3 +63,4 @@
 
  </div>
 </div>
+
