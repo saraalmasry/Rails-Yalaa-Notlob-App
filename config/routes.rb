@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  # resources :orders
+  get 'home/index'
+  devise_for :users, controllers: { registrations: "registrations"}
+  root 'home#index'
 
   get 'orders/list'
   get 'orders/index'

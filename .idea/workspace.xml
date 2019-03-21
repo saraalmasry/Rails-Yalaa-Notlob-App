@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="65f83cb1-83c6-45c9-b25e-9158eda5f48c" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/app/views/layouts/_navigation.html.erb" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/views/orders/index.html.erb" afterDir="false" />
@@ -16,9 +17,21 @@
       <change beforePath="$PROJECT_DIR$/app/views/orders/list.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/orders/list.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+=======
+    <list default="true" id="2e636b8a-b1da-47f3-9814-a1c0eb41d069" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.generators" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.rakeTasks" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Rails-Yalaa-Notlob-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Rails-Yalaa-Notlob-App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
+    <ignored path="$PROJECT_DIR$/log/" />
     <ignored path="$PROJECT_DIR$/public/system/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
     <ignored path="$PROJECT_DIR$/vendor/bundle/" />
@@ -29,6 +42,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="834248076">
       <usages-collector id="statistics.lifecycle.project">
@@ -166,6 +180,15 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
               <caret line="6" selection-start-line="6" selection-end-line="6" />
+=======
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/bin/rails">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20">
+              <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
             </state>
           </provider>
         </entry>
@@ -175,6 +198,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -221,6 +245,8 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
+=======
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="324" />
     <option name="y" value="261" />
@@ -240,6 +266,7 @@
               <item name="Rails-Yalaa-Notlob-App" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails-Yalaa-Notlob-App" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="Rails-Yalaa-Notlob-App" type="b2602c69:ProjectViewProjectNode" />
               <item name="Rails-Yalaa-Notlob-App" type="462c0819:PsiDirectoryNode" />
@@ -306,6 +333,8 @@
               <item name="Rails-Yalaa-Notlob-App" type="462c0819:PsiDirectoryNode" />
               <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
+=======
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
           </expand>
           <select />
         </subPane>
@@ -315,8 +344,10 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.ruby.settings.RubyActiveModuleSdkConfigurable" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -332,8 +363,8 @@
   </component>
   <component name="RunManager" selected="Rails.Development: Rails-Yalaa-Notlob-App">
     <configuration name="Development: Rails-Yalaa-Notlob-App" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="Rails-Yalaa-Notlob-App" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
@@ -356,8 +387,8 @@
       <method v="2" />
     </configuration>
     <configuration name="Production: Rails-Yalaa-Notlob-App" type="RailsRunConfigurationType" factoryName="Rails">
-      <predefined_log_file id="RUBY_RAILS_SERVER" enabled="true" />
       <module name="Rails-Yalaa-Notlob-App" />
+      <predefined_log_file enabled="true" id="RUBY_RAILS_SERVER" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="$MODULE_DIR$" />
       <RAILS_SERVER_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
@@ -426,12 +457,6 @@
       <RAKE_RUN_CONFIG_SETTINGS_ID NAME="RAKE_TASK_OPTION_PREREQS" VALUE="false" />
       <method v="2" />
     </configuration>
-    <list>
-      <item itemvalue="Rake.test: Rails-Yalaa-Notlob-App" />
-      <item itemvalue="Rake.spec: Rails-Yalaa-Notlob-App" />
-      <item itemvalue="Rails.Production: Rails-Yalaa-Notlob-App" />
-      <item itemvalue="Rails.Development: Rails-Yalaa-Notlob-App" />
-    </list>
   </component>
   <component name="SpringUtil" SPRING_PRE_LOADER_OPTION="true" />
   <component name="SvnConfiguration">
@@ -439,35 +464,64 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="65f83cb1-83c6-45c9-b25e-9158eda5f48c" name="Default Changelist" comment="" />
-      <created>1552930165864</created>
+      <changelist id="2e636b8a-b1da-47f3-9814-a1c0eb41d069" name="Default Changelist" comment="" />
+      <created>1553022837006</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
+<<<<<<< HEAD
       <updated>1552930165864</updated>
       <workItem from="1552930167228" duration="6725000" />
       <workItem from="1552943368357" duration="1777000" />
       <workItem from="1552985759839" duration="8712000" />
       <workItem from="1552999013495" duration="5000" />
       <workItem from="1553152229193" duration="12142000" />
+=======
+      <updated>1553022837006</updated>
+      <workItem from="1553022840652" duration="187000" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="29361000" />
+=======
+    <option name="totallyTimeSpent" value="187000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
   </component>
   <component name="ToolWindowManager">
-    <frame x="71" y="25" width="1849" height="1055" extended-state="6" />
+    <frame x="0" y="30" width="1920" height="1050" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26067665" />
+=======
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2497332" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" weight="0.32998884" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Messages" weight="0.32998884" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32998884" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
@@ -475,19 +529,20 @@
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33225107" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32900432" />
+=======
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32998884" />
+      <window_info anchor="right" id="Database" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
-  </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/db/migrate/20190318175448_create_users.rb" />
     <entry file="file://$PROJECT_DIR$/db/migrate/20190318175849_create_groups.rb" />
     <entry file="file://$PROJECT_DIR$/app/models/article.rb" />
@@ -682,6 +737,12 @@
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#nav#0;n#!!top" expanded="true" />
           </folding>
+=======
+    <entry file="file://$PROJECT_DIR$/bin/rails">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20">
+          <caret line="1" column="61" selection-start-line="1" selection-start-column="61" selection-end-line="1" selection-end-column="61" />
+>>>>>>> c200fac4de6cb997fdee7efbefbfb98441bcfacd
         </state>
       </provider>
     </entry>
