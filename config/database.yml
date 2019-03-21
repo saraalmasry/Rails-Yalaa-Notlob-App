@@ -15,11 +15,11 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: sql7283860
-  password: aEAVPplD2a
+  username: sql9284545
+  password: Aw3uQQrVxZ
   socket: 3306
-  host: sql7.freemysqlhosting.net
-  database: sql7283860
+  host: sql9.freemysqlhosting.net
+  database: sql9284545
 
 
 # Local DB Info
@@ -34,7 +34,7 @@ default: &default
 development:
   <<: *default
   # database: yalla_development
-  database: sql7283860
+  database: sql9284545
 
 
 # Warning: The database defined as "test" will be erased and
