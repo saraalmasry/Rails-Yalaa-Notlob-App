@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
+  # resources :orders
+
   get 'orders/list'
+  get 'orders/index'
 
   get 'groups/index'
   get 'friend_ship/Friends'

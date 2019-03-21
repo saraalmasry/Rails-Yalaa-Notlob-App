@@ -1,6 +1,11 @@
 class OrdersController < ApplicationController
-def add
-end
-def list
-end
+
+  def index
+    @orders = Order.last(10).reverse
+  end
+
+  def add
+  end
+  # def list
+  # end
 end

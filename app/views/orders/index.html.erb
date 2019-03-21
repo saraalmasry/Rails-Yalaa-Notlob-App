@@ -1,0 +1,62 @@
+<%= render 'layouts/navigation' %>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm">
+      <div style="border: 1px solid black; margin-top: 20px; background-color: #bee5eb;">
+        <br>
+        <table class="table" style="border: none;">
+          <thead>
+          </thead>
+          <tbody>
+          <% @orders.each do |order| %>
+            <tr class="table-info">
+              <td>
+                <%= order.meal %> on
+                <%= order.created_at.strftime("%b %d, %Y") %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+      <div style="position: absolute;
+          top: 5px;
+          font-size: 20px;
+          left: 30px;
+          background-color: #f8f9fa;
+          padding: 0 10px;
+          border-radius: 10px">Latest Orders</div>
+    </div>
+    <div class="col-sm">
+      <div style="border: 1px solid black; margin-top: 20px; background-color: #bee5eb;">
+        <br>
+        <table class="table" style="border: none;">
+          <thead>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr class="table-info">
+                <td>
+                <%= order.user.name %> has created an order
+                <%#= link_to 'show', article_path(article) %>
+                for <%= order.meal %>
+                from <%= order.restourant %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+      </div>
+      <div style="position: absolute;
+          top: 5px;
+          font-size: 20px;
+          left: 30px;
+          background-color: #f8f9fa;
+          padding: 0 10px;
+          border-radius: 10px">Friends Activity</div>
+    </div>
+  </div>
+</div>
