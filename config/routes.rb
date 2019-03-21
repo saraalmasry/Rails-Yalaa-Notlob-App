@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   get 'orders/list'
 
-  get 'groups/index'
+  get 'groups/index' , 
   resources :groups
   get 'friend_ship/Friends'
 
