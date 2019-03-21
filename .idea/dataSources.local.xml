@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Rails Rails-Yalaa-Notlob-App: production" uuid="1b22ee9a-f1c9-49e4-9272-65cf065190ef">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <user-name>sql7283860</user-name>
+    </data-source>
+    <data-source name="Rails Rails-Yalaa-Notlob-App: development" uuid="efab6207-86f3-4603-970f-170d670ab223">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <user-name>sql7283860</user-name>
+    </data-source>
+    <data-source name="Rails Rails-Yalaa-Notlob-App: default" uuid="d9b763f6-ee7c-4162-9f89-3b0d674124e0">
+      <database-info product="MySQL" version="5.5.58-0ubuntu0.14.04.1" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.46 ( Revision: 9cc87a48e75c2d2e87c1a293b2862ce651cb256e )" family="MYSQL" exact-version="5.5.58">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="exact" quoted-identifiers="exact" />
+      <user-name>sql7283860</user-name>
+      <introspection-schemas>*:@</introspection-schemas>
+    </data-source>
+    <data-source name="Rails Rails-Yalaa-Notlob-App: test" uuid="a4275f6c-d6c9-4017-afb6-270eda239cec">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" family="MYSQL" exact-version="0.0" />
+      <user-name>sql7283860</user-name>
+    </data-source>
+  </component>
+</project>

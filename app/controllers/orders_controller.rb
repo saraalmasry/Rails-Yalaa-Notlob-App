@@ -4,8 +4,13 @@ class OrdersController < ApplicationController
     @orders = Order.last(10).reverse
   end
 
+  def show
+    @order = Order.find(params[:id])
+  end
+
   def add
   end
-  # def list
-  # end
+
+  def list
+  end
 end

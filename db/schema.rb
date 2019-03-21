@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_03_21_160312) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
     t.index ["order_id"], name: "index_user_orders_on_order_id"
     t.index ["user_id"], name: "index_user_orders_on_user_id"
   end

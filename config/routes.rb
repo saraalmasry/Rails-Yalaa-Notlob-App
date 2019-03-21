@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get '/users/sign_up'
   root :to => redirect('/users/sign_in')
 
-  get 'orders', to: 'orders#index'
+  # get 'orders', to: 'orders#index'
+  # get 'orders/:id', to: 'orders#show' do
+  resources :orders do
+    resources :user_orders
+  end
 
   get 'orders/list'
 
