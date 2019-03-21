@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center">
  <h1> Groups </h1>
  <hr />
  <div class = "row">
@@ -11,9 +11,47 @@
   </div>
  </div>
  <div class = "row">
+
   <div class="col-sm-3 myGroups">
    <h3> My Groups </h3>
-
+       <ul>
+       <li>
+       <span>OS</span>
+       <i class="fas fa-times fa-2x"> </i>
+       <i class="fas fa-user-plus fa-2x"></i>
+       </li>
+       </ul>
   </div>
+
+<div class="col-sm-9 groupMembers">
+     <h3> Group Name </h3>
+  <div class="container">
+
+   <div class="row">
+     <div class="col-sm-12">
+       <%= form_tag("/addGroupMember", method: "post") do %>
+       <%= label_tag(:friendName, "Your Friend Name:") %>
+       <%= text_field_tag(:friendName) %>
+       <%= submit_tag("Add") %>
+         <% end %>
+     </div>
+    </div>
+
+    <div class="row">
+     <div class="col-sm-6">
+       <div class="card" style="width: 18rem;">
+  <%=image_tag "user.png" ,  style: 'height:50%'%>
+  <div class="card-body">
+    <h5 class="card-title">Friend Name</h5>
+    <a href="#" class="btn btn-primary">un friend</a>
+  </div>
+</div>
+     </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
  </div>
 </div>
