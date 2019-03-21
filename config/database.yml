@@ -71,4 +71,4 @@ production:
   # username: yalla
   username: sql9284545
   # password: <%= ENV['YALLA_DATABASE_PASSWORD'] %>
-password: Aw3uQQrVxZ
+  password: Aw3uQQrVxZ

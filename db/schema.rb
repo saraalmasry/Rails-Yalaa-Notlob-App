@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_19_122001) do
+
+ActiveRecord::Schema.define(version: 2019_03_21_092445) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_122001) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
-    t.string "mail"
+    t.string "meal"
     t.string "restourant"
     t.string "menuImg"
     t.string "status"
@@ -74,7 +75,7 @@ ActiveRecord::Schema.define(version: 2019_03_19_122001) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "password"
+    t.string "encrypted_password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
