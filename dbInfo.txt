@@ -1,0 +1,5 @@
+Server: sql9.freemysqlhosting.net
+Name: sql9284545
+Username: sql9284545
+Password: Aw3uQQrVxZ
+Port number: 3306
