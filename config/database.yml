@@ -43,7 +43,7 @@ development:
 test:
   <<: *default
   # database: yalla_test
-  database: sql7283860
+  database: sql9284545
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -67,8 +67,8 @@ test:
 production:
   <<: *default
   # database: yalla_production
-  database: sql7283860
+  database: sql9284545
   # username: yalla
-  username: sql7283860
+  username: sql9284545
   # password: <%= ENV['YALLA_DATABASE_PASSWORD'] %>
-  password: aEAVPplD2a
+  password: Aw3uQQrVxZ
