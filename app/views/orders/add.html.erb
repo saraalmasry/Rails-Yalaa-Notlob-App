@@ -1,0 +1,83 @@
+
+
+<div class="big_container">
+
+<div class="row">
+
+<div class="form_container col-xs-6">
+
+
+
+<form accept-charset="UTF-8" action="/orders/add" class="new_order " method="post">
+  <div class="form-group">
+    <label >Order for</label>
+    <select class="form-control" >
+      <option>Breakfast</option>
+      <option>Lunch</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label>Resturant</label>
+    <input class="form-control" id="user_password" name="user[password]" type="password">
+  </div>
+  <div class="form-group">
+    <label for="user_password">Friends</label>
+    <input class="form-control" id="user_password" name="user[password]" type="password">
+  </div>
+
+  <div class="form-group">
+        <label>Upload Image</label>
+        <div class="input-group">
+            <span class="input-group-btn">
+                <span class="btn btn-default btn-file">
+                    Browse… <input type="file" id="imgInp">
+                </span>
+            </span>
+            <input type="text" class="form-control" readonly>
+        </div>
+        <img id='img-upload'/>
+    </div>
+  
+  <input class="btn btn-primary" name="commit" type="submit" value="Publish">
+</form>
+</div>
+
+<div class="friends_container col-xs-6">
+  <div class="row">
+    <div class="friend col-sm friend">
+      <div>
+      <div class="row">
+        <div class="col-sm">
+          <img src="" width="100" height="100">
+        </div>
+        <div class="col-sm">
+          <h3>Ahmed</h3>
+          <a href="#">remove </a>
+        </div>
+      </div>
+      </div>
+    </div>
+    <div class="friend col-sm">
+      One of three columns
+    </div>
+    <div class="friend col-sm">
+      One of three columns
+    </div>
+    <div class="friend col-sm">
+      One of three columns
+    </div><div class="friend col-sm">
+    One of three columns
+  </div>
+  <div class="friend col-sm">
+      One of three columns
+    </div>
+    <div class="friend col-sm">
+      One of three columns
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+</div>
