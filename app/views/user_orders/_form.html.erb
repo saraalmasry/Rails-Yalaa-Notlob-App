@@ -1,7 +1,7 @@
 <%= form_with(model: [@order, @order.user_orders.build],  local: true) do |form|  %>
 <!--  model: [@order, @order.user_orders.build],-->
   <div class="form-row">
-    <%= form.text_field :user_id, type: "hidden", value: "1" %>
+    <%= form.text_field :user_id, type: "hidden", value: current_user.id %>
     <div class="col-md-2">
       <%= form.label :item %><br>
       <%= form.text_field :item, class: "form-control", placeholder: "item" %>
