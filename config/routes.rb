@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations'}
+  devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: "omniauth_callbacks", confirmations: "confirmations"}
   get '/users/sign_up'
   root :to => redirect('/users/sign_in')
 

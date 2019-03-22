@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_22_130213) do
+ActiveRecord::Schema.define(version: 2019_03_22_160041) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -83,6 +83,12 @@ ActiveRecord::Schema.define(version: 2019_03_22_130213) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string "provider"
+    t.string "uid"
+    t.string "oauth_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.datetime "oauth_expires_at"
   end
 
   add_foreign_key "friend_ships", "users", column: "creator_id"
