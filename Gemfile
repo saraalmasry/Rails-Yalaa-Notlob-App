@@ -6,6 +6,8 @@ ruby '2.6.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
+gem 'activity_notification'
+
 gem "font-awesome-rails"
 gem 'devise', '~> 4.6', '>= 4.6.1'
 
@@ -70,3 +72,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

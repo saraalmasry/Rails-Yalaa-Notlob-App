@@ -13,7 +13,7 @@
         <a class="nav-link" href="#">Friends</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Groups</a>
+          <%= link_to 'Groups', groups_path, class: "nav-link"%>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">Orders</a>
@@ -33,7 +33,9 @@
           <a class="nav-link" href="#">Username</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Logout</a>
+
+            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+
         </li>
       </ul>
     </div>
