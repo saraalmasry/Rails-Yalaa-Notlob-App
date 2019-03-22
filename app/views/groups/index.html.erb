@@ -1,3 +1,5 @@
+<%= render 'layouts/navigation' %>
+
 <div class="container text-center">
  <h1> Groups </h1>
  <hr />
@@ -13,13 +15,19 @@
  <div class = "row">
 
   <div class="col-sm-3 myGroups">
-   <h3> My Groups </h3>
+   <h3> Your Groups </h3>
+   <hr />
        <ul>
       <% @groups.each do |group| %>
        <li>
          <%= link_to group.name , :id => group.id %>
-       <i class="fas fa-times fa-2x"> </i>
-       <i class="fas fa-user-plus fa-2x"></i>
+
+<%= link_to ('<i class="fas fa-times fa-2x"> </i>').html_safe , [group] ,
+  method: :delete,
+  data: {confirm: 'Are You Sure To delete Group' } %>
+
+
+      <%= link_to  ('<i class="fas fa-user-plus fa-2x"></i> ').html_safe , :id => group.id %>
        </li>
        <hr />
         <% end %>
@@ -27,7 +35,10 @@
   </div>
 
 <div class="col-sm-9 groupMembers">
+ <% if @groupDetail != nil  %>
      <h3> <%= @groupDetail.name %> </h3>
+     <hr />
+
   <div class="container">
 
    <div class="row">
@@ -38,6 +49,7 @@
        <%= submit_tag("Add") %>
          <% end %>
      </div>
+        <%end%>
     </div>
 
     <div class="row">
@@ -63,4 +75,3 @@
 
  </div>
 </div>
-
