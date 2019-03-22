@@ -35,14 +35,14 @@
         <table class="table" style="border: none;">
           <thead>
           </thead>
-          <tbody>
+          <tbody id="f_activity">
             <% @orders.each do |order| %>
               <tr class="table-info">
                 <td>
                 <%= order.user.name %> has created an
                 <%= link_to 'Order', order_path(order) %>
                 for <%= order.meal %>
-                from <%= order.restourant %>
+                from <%= order.restaurant %>
                 </td>
               </tr>
             <% end %>
@@ -60,3 +60,28 @@
     </div>
   </div>
 </div>
+
+<script>
+
+  let friend = document.getElementById("f_activity");
+
+  setInterval(()=>{
+    fetch("http://localhost:3000/myfriends_data").then((data)=>{
+        return data.json();
+    }).then((data)=>{
+        let activities = JSON.parse(JSON.stringify(data));
+        // console.log(activities[0]);
+        friend.innerText = "";
+        activities.forEach((activity) =>{
+          let tr = document.createElement('tr');
+          tr.classList.add("table-info");
+          let td = document.createElement('td');
+          td.innerText = activity.user_id + " has created an order for " + activity.meal +" from " +
+              activity.restaurant;
+          tr.appendChild(td);
+          friend.appendChild(tr);
+        });
+    });
+
+  }, 60000);
+</script>
