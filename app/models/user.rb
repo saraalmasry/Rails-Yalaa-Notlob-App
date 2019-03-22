@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :usrs
   has_many :user_orders, dependent: :destroy
+  has_many :friend_ships, dependent: :destroy
+  acts_as_target
 end

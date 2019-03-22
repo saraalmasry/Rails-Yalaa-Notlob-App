@@ -6,6 +6,8 @@ ruby '2.5.1'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 
+gem 'activity_notification'
+
 gem "font-awesome-rails"
 gem 'devise', '~> 4.6', '>= 4.6.1'
 

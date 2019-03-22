@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations'}
+  notify_to :users, with_devise: :users, devise_default_routes: true
+
   get '/users/sign_up'
   root :to => redirect('/users/sign_in')
 
