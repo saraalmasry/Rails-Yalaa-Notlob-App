@@ -1,5 +1,29 @@
 class FriendShipController < ApplicationController
   def index
+    @friendShips=FriendShip.all 
+    # @friend_ships_of_current_user= @friend_ships.select{|friendShip| 
+    #   friendShip.creator_id == current_user.id ||
+    #   friendShip.myfriend_id == current_user.id  
+    # }
+    #for testing
+    @friendshipsOfCurrentUser= @friendShips.select{|friendShip| 
+      friendShip.creator_id == 1 ||
+      friendShip.myfriend_id == 1 
+    }
+
+    @friendsCreatedByCurrentUser= @friendshipsOfCurrentUser.collect do |friendShip|
+      
+        User.find_by_id!(friendShip.myfriend_id)
+        end  
+    @friendsAddedTheCurrentUser= @friendshipsOfCurrentUser.collect do |friendShip|
+      
+          User.find_by_id!(friendShip.creator_id)
+        end  
+    @friends = @friendsCreatedByCurrentUser  +  @friendsAddedTheCurrentUser
+          
+
+         
+     
   end
 
   def create
