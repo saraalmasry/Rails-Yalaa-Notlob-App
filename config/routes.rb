@@ -10,7 +10,10 @@ Rails.application.routes.draw do
   # get 'orders/:id', to: 'orders#show' do
   resources :orders do
     resources :user_orders
+
   end
+
+  get 'myfriends_data',  to: 'orders#friends_data'
 
   get 'orders/list'
 
