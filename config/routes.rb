@@ -16,9 +16,11 @@ Rails.application.routes.draw do
 
   get 'groups/index'
   resources :groups
-  get 'friend_ship/Friends'
 
-  post 'friend_ship/Friends' , to:'friend_ship#addFriend'
+  resources :friend_ship , only: [:index, :create]
+  # get 'friend_ship/Friends'
+
+  # post 'friend_ship/Friends' => 'friend_ship#addFriend'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'orders/add' => 'orders#add'

@@ -1,9 +1,8 @@
 class FriendShipController < ApplicationController
-  def Friends
+  def index
   end
 
-  def addFriend
-    redirect_to groups_path 
-    render plain: params[:user].inspect
+  def create
+   
   end  
 end
