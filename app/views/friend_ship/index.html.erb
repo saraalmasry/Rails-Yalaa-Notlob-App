@@ -5,7 +5,7 @@
     <%# <button class="btn btn-primary">Add </button> %>
      <%# <%= button_to 'Add', friend_ship_addFriend_path, "btn btn-lg btn-primary"method: :post %> 
    <%# <%= link_to "Add", friend_ship_Friends_path, class: "btn btn-lg btn-primary",method: :post %>  
-  <%= form_with model: @user, url: friend_ship_index_url , :html => { :method => :post } do |form| %>
+  <%= form_with  url: friend_ship_index_url , :html => { :method => :post } ,local: true do |form| %>
   <%= form.text_field :email %>
   <%= form.submit %>
   <% end %>
