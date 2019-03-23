@@ -6,9 +6,12 @@
 </div>
 
 <div class="container list" >
+<a href="#">Add Order</a>
 
 <table class=" table table-striped vertical-center tableList" >
+
   <thead>
+  
     <tr>
       <th>Order</th>
       <th>Resturant</th>
@@ -21,49 +24,29 @@
   </thead>
 
  <tbody>
+ <% @orders.each do |order| %>
      <tr>
-      <td>Breakfast </td>
-      <td > 7amza </td>
-      <td style="width: 7%">10 </td>
-      <td style="width: 7%">7 </td>
-      <td>waiting </td>
+      <td><%= order.meal %> </td>
+      <td > <%= order.restourant %>  </td>
+      <td style="width: 7%"><%= order.join %>  </td>
+      <td style="width: 7%">
+      
+      <%=  @userOrders.inspect  %>
+      
+      </td>
+      <td><%= order.status %>  </td>
       <td style="width: 4%"> <a href="#">view</a> </td>
       <td style="width: 4%"> <a href="#">finish</a> </td>
-      <td style="width: 4%"> <a href="#">cancel</a> </td>
+      <td style="width: 4%"> <%= link_to 'Cancel', 
+      order_path(order), 
+                  method: :delete, 
+                  data: { confirm: 'Are you sure?' } %>  </td>
     </tr>
-
-    <tr>
-    <td>Breakfast </td>
-    <td > 7amza </td>
-    <td style="width: 7%">10 </td>
-    <td style="width: 7%">7 </td>
-    <td>waiting </td>
-    <td style="width: 4%"> <a href="#">view</a> </td>
-    <td style="width: 4%"> <a href="#">finish</a> </td>
-    <td style="width: 4%"> <a href="#">cancel</a> </td>
-  </tr>
-
-  <tr>
-  <td>Breakfast </td>
-  <td > 7amza </td>
-  <td style="width: 7%">10 </td>
-  <td style="width: 7%">7 </td>
-  <td>waiting </td>
-  <td style="width: 4%"> <a href="#">view</a> </td>
-  <td style="width: 4%"> <a href="#">finish</a> </td>
-  <td style="width: 4%"> <a href="#">cancel</a> </td>
-</tr>
-
-<tr>
-<td>Breakfast </td>
-<td > 7amza </td>
-<td style="width: 7%">10 </td>
-<td style="width: 7%">7 </td>
-<td>waiting </td>
-<td style="width: 4%"> <a href="#">view</a> </td>
-<td style="width: 4%"> <a href="#">finish</a> </td>
-<td style="width: 4%"> <a href="#">cancel</a> </td>
-</tr>
+   
+    <% end %>
+    
 
  </tbody>
+ </table>
+ 
  </div>
