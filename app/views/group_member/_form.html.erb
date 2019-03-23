@@ -1,0 +1,5 @@
+<%= form_with scope: :groupMember  , url: group_group_members_path do |form|  %>
+<%= form.label :name %>
+<%= form.text_field :name %>
+<%= form.submit("Add") %>
+  <% end %>

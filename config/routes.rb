@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   get 'orders/list'
 
   get 'groups/index'
-  resources :groups
+  resources :groups do
+    resources :group_members
+  end
   get 'friend_ship/Friends'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

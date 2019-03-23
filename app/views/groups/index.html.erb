@@ -43,11 +43,7 @@
 
    <div class="row">
      <div class="col-sm-12">
-       <%= form_tag("/addGroupMember", method: "post") do %>
-       <%= label_tag(:friendName, "Your Friend Name:") %>
-       <%= text_field_tag(:friendName) %>
-       <%= submit_tag("Add") %>
-         <% end %>
+      <%= render 'group_member/form' %>
      </div>
         <%end%>
     </div>
@@ -75,3 +71,4 @@
 
  </div>
 </div>
+<% console %>
