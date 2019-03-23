@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get 'groups/index'
   resources :groups
 
-  resources :friend_ship , only: [:index, :create]
+  resources :friend_ship , only: [:index, :create, :destroy]
   # get 'friend_ship/Friends'
 
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
