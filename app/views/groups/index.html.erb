@@ -43,7 +43,12 @@
 
    <div class="row">
      <div class="col-sm-12">
-      <%= render 'group_member/form' %>
+     <%= form_with scope: :group_member  , url: groups_user_index_path do |form|  %>
+      <%= form.label :name %>
+      <%= form.email_field :email %>
+      <%= hidden_field_tag "group_member[group_id]", "#{params[:id]}" %>
+      <%= form.submit("Add") %>
+      <% end %>
      </div>
         <%end%>
     </div>
@@ -71,4 +76,4 @@
 
  </div>
 </div>
-<% console %>
+
