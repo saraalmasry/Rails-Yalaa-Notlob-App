@@ -55,4 +55,37 @@ class FriendShipController < ApplicationController
     #  puts params[:email]
 
   end  
+
+
+  def destroy
+    
+    @friendShipsCreatedByFriend = FriendShip.find_by_creator_id(params[:id])
+    @friendShipsCreatedByCurrentUser = FriendShip.find_by_myfriend_id(params[:id])
+    if  @friendShipsCreatedByFriend
+        @friendShipsCreatedByFriend.destroy
+        if @friendShipsCreatedByFriend.destroy 
+          puts " @friendShipsCreatedByFriend deleted"
+        else
+          puts " @friendShipsCreatedByFriend not deleted"  
+        end   
+    end 
+    if @friendShipsCreatedByCurrentUser
+        @friendShipsCreatedByCurrentUser.destroy
+        if @friendShipsCreatedByCurrentUser.destroy 
+          puts " @friendShipsCreatedByCurrentUser deleted"
+        else
+          puts " @friendShipsCreatedByCurrentUser deleted"  
+        end  
+    end
+
+   
+
+    
+
+
+  
+    redirect_to :action => "index"
+
+
+  end    
 end
