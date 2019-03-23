@@ -6,16 +6,20 @@ class FriendShipController < ApplicationController
     #   friendShip.myfriend_id == current_user.id  
     # }
     #for testing
-    @friendshipsOfCurrentUser= @friendShips.select{|friendShip| 
-      friendShip.creator_id == 1 ||
-      friendShip.myfriend_id == 1 
+    @friendShipsCreatedByCurrentUser= @friendShips.select{|friendShip| 
+      friendShip.creator_id == 1
+     
+    }
+    @friendsAddedTheCurrentUse= @friendShips.select{|friendShip| 
+      friendShip.myfriend_id == 1
+     
     }
 
-    @friendsCreatedByCurrentUser= @friendshipsOfCurrentUser.collect do |friendShip|
+    @friendsCreatedByCurrentUser=@friendShipsCreatedByCurrentUser.collect do |friendShip|
       
         User.find_by_id!(friendShip.myfriend_id)
         end  
-    @friendsAddedTheCurrentUser= @friendshipsOfCurrentUser.collect do |friendShip|
+    @friendsAddedTheCurrentUser=  @friendsAddedTheCurrentUse.collect do |friendShip|
       
           User.find_by_id!(friendShip.creator_id)
         end  
