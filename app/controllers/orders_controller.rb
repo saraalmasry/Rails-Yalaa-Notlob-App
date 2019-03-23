@@ -4,7 +4,7 @@ end
 
 
 def list
-    @orders = Order.where(:user => '1')
+    @orders = Order.where(:user => '6')
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
 end
@@ -12,7 +12,7 @@ end
 def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    redirect_to :back
+    # redirect_to "orders_list"
     
   end
   
@@ -25,10 +25,7 @@ def create
      
 end
 
-private
-  def order_params
-    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
-  end
+
 
 
   def index
@@ -39,6 +36,17 @@ private
   def friends_data
     @orders = Order.last(10).reverse
     render :json => @orders
+  end
+
+  def update
+    
+    @order=Order.find(params[:id])
+    @order.update(status: 'finished')
+  end
+ 
+  private
+  def order_params
+    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
   end
 
 end

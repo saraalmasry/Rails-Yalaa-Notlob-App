@@ -28,8 +28,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :orders
-  get 'orders_list' => "orders#list"
+  get 'orders/list' => "orders#list"
   get "orders/new" => "orders#new"
 
   get 'orders/add' => 'orders#add'
+
+   
+
+  
 end

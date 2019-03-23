@@ -28,7 +28,7 @@
  <% @orders.each do |order| %>
      <tr>
       <td><%= order.meal %> </td>
-      <td > <%= order.restourant %>  </td>
+      <td > <%= order.restaurant %>  </td>
       <td style="width: 7%"><%= order.join %>  </td>
       <td style="width: 7%">
       
@@ -36,12 +36,18 @@
       
       </td>
       <td><%= order.status %>  </td>
+
       <td style="width: 4%"> <a href="#">view</a> </td>
-      <td style="width: 4%"> <a href="#">finish</a> </td>
+      <% if order.status == 'waiting' %>
+      <td style="width: 4%"> 
+      <%= link_to 'finish',  update_order_path(order) %>
+      
+      </td>
       <td style="width: 4%"> <%= link_to 'Cancel', 
       order_path(order), 
                   method: :delete, 
                   data: { confirm: 'Are you sure?' } %>  </td>
+       <% end %>
     </tr>
    
     <% end %>
