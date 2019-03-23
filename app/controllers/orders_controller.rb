@@ -13,24 +13,17 @@ def destroy
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to :back
-    
-  end
-  
 
-def create 
+  end
+
+
+def create
     @orders = Order.new(order_params)
- 
+
     @orders.save
     redirect_to @order
-     
+
 end
-
-private
-  def order_params
-    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
-  end
-
-
   def index
     @orders = Order.last(10).reverse
     @myorders = Order.where(user_id: current_user.id)
@@ -40,5 +33,13 @@ private
     @orders = Order.last(10).reverse
     render :json => @orders
   end
+
+private
+  def order_params
+    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
+  end
+
+
+
 
 end
