@@ -1,10 +1,15 @@
 class FriendShipController < ApplicationController
   def index
     @friendShips=FriendShip.all 
-    # @friend_ships_of_current_user= @friend_ships.select{|friendShip| 
-    #   friendShip.creator_id == current_user.id ||
-    #   friendShip.myfriend_id == current_user.id  
+    # @friendShipsCreatedByCurrentUser= @friendShips.select{|friendShip| 
+    #   friendShip.creator_id == current_user.id
+     
     # }
+    # @friendsAddedTheCurrentUse= @friendShips.select{|friendShip| 
+    #   friendShip.myfriend_id == current_user.id
+     
+    # }
+
     #for testing
     @friendShipsCreatedByCurrentUser= @friendShips.select{|friendShip| 
       friendShip.creator_id == 1
@@ -41,6 +46,7 @@ class FriendShipController < ApplicationController
       @friend_ship=FriendShip.new( creator_id: @creator_id,myfriend_id: @myfriend_id)
       if @friend_ship.save
         puts "ok"
+        redirect_to :action => "index"
       else 
         puts "no"
       end
