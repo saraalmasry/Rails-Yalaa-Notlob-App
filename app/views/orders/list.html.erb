@@ -6,7 +6,7 @@
 </div>
 
 <div class="container list" >
-<a href="#">Add Order</a>
+<%= link_to 'Add Order', orders_new_path %>
 
 <table class=" table table-striped vertical-center tableList" >
 
@@ -28,7 +28,7 @@
  <% @orders.each do |order| %>
      <tr>
       <td><%= order.meal %> </td>
-      <td > <%= order.restourant %>  </td>
+      <td > <%= order.restaurant %>  </td>
       <td style="width: 7%"><%= order.join %>  </td>
       <td style="width: 7%">
       
@@ -36,12 +36,21 @@
       
       </td>
       <td><%= order.status %>  </td>
-      <td style="width: 4%"> <a href="#">view</a> </td>
-      <td style="width: 4%"> <a href="#">finish</a> </td>
+
+      <td style="width: 4%"> <%= link_to 'view', orders_new_path %> </td>
+      <% if order.status == 'waiting' %>
+      <td style="width: 4%"> 
+      <%= link_to 'Finish', 
+      order_path(order), 
+                  method: :put
+                   %> 
+      
+      </td>
       <td style="width: 4%"> <%= link_to 'Cancel', 
       order_path(order), 
                   method: :delete, 
                   data: { confirm: 'Are you sure?' } %>  </td>
+       <% end %>
     </tr>
    
     <% end %>

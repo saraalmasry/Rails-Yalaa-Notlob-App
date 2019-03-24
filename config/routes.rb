@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   notify_to :users, with_devise: :users, devise_default_routes: true
 
   get '/users/sign_up'
-  root :to => redirect('/users/sign_in')
+  root 'home#homepage'
 
   # get 'orders', to: 'orders#index'
   # get 'orders/:id', to: 'orders#show' do
@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   get 'myfriends_data',  to: 'orders#friends_data'
 
-  
+
+  # get "/auth/facebook/callback" => "users/omniauth_callbacks#facebook"
+  # get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
 
   get 'groups/index'
   resources :groups  
@@ -30,8 +32,12 @@ Rails.application.routes.draw do
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :orders
-  get 'orders_list' => "orders#list"
+  get 'orders/list' => "orders#list"
   get "orders/new" => "orders#new"
 
   get 'orders/add' => 'orders#add'
+
+   
+
+  
 end

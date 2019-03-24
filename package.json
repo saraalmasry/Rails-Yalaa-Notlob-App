@@ -1,5 +1,7 @@
 {
   "name": "yallaNotlobApp",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "bootstrap-suggest": "^2.0.3"
+  }
 }
