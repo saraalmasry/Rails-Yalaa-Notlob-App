@@ -66,7 +66,7 @@
   let friend = document.getElementById("f_activity");
 
   setInterval(()=>{
-    fetch("http://localhost:3000/myfriends_data").then((data)=>{
+    fetch("/myfriends_data").then((data)=>{
         return data.json();
     }).then((data)=>{
         let activities = JSON.parse(JSON.stringify(data));
@@ -76,12 +76,13 @@
           let tr = document.createElement('tr');
           tr.classList.add("table-info");
           let td = document.createElement('td');
-          td.innerText = activity.user_id + " has created an order for " + activity.meal +" from " +
-              activity.restaurant;
+          td.innerHTML = activity.user.name + " has created an " +
+              "<a href=\"/orders/" +activity.id + "\">Order</a>"+ " for " + activity.meal +
+              " from " + activity.restaurant;
           tr.appendChild(td);
           friend.appendChild(tr);
         });
     });
 
-  }, 60000);
+  }, 30000);
 </script>
