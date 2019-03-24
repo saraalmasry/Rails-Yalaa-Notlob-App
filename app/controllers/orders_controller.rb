@@ -4,45 +4,50 @@ def new
 end
 
 
-def show
+  def index
+    @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)
+    @friend_ships1 = FriendShip.select("creator_id").where(myfriend_id: current_user.id)
+    @orders = Order.where(user_id: @friend_ships, user_id: @friend_ships1).last(10).reverse
+    @myorders = Order.where(user_id: current_user.id)
+  end
+
+
+def list
     @orders = Order.where(:user => current_user.id)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
 end
 
-def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
-    redirect_to orders_show_path
 
-    
+  def show
+    @order = Order.find(params[:id])
   end
 
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    redirect_to orders_list_path
+  end
 
 def create
     @order = Order.new(order_params)
 
+
     @order.save
-    redirect_to orders_show_path
-
-     
-end
-
-  def index
-    @orders = Order.last(10).reverse
-    @myorders = Order.where(user_id: current_user.id)
+    redirect_to orders_list_path
   end
 
   def friends_data
-    @orders = Order.last(10).reverse
-    render :json => @orders
+    @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)
+    @friend_ships1 = FriendShip.select("creator_id").where(myfriend_id: current_user.id)
+    @orders = Order.where(user_id: @friend_ships, user_id: @friend_ships1).last(10).reverse
+    render :json => @orders, :include => :user
   end
 
   def update
-    
     @order=Order.find(params[:id])
     @order.update(status: 'finished')
-    redirect_to orders_show_path
+    redirect_to orders_list_path
   end
  
 

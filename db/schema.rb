@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 2019_03_24_133024) do
   add_foreign_key "groups", "users"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
+
   add_foreign_key "invited_friends", "orders"
   add_foreign_key "invited_friends", "users"
   add_foreign_key "notifications", "orders"

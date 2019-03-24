@@ -1,3 +1,4 @@
+<%= render 'layouts/navigation' %>
 
 <div class="header">
 
@@ -37,7 +38,7 @@
       </td>
       <td><%= order.status %>  </td>
 
-      <td style="width: 4%"> <%= link_to 'view', orders_new_path %> </td>
+      <td style="width: 4%"> <%= link_to 'view', order_path(order) %> </td>
       <% if order.status == 'waiting' %>
       <td style="width: 4%"> 
       <%= link_to 'Finish', 

@@ -8,7 +8,7 @@ class User < ApplicationRecord
   has_many :user_orders, dependent: :destroy
 
   has_many :friend_ships, dependent: :destroy
-  acts_as_target
+
 
   has_and_belongs_to_many :groups
 

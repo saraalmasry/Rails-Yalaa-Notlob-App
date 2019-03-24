@@ -2,16 +2,21 @@ Rails.application.routes.draw do
 
 
   devise_for :users, controllers: { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks", confirmations: "confirmations"}
-  notify_to :users, with_devise: :users, devise_default_routes: true
+
+  resources :notifications
 
   get '/users/sign_up'
   root 'home#homepage'
 
+  get 'orders_list' => "orders#list"
+  get "orders/new" => "orders#new"
+
+  get 'orders/add' => 'orders#add'
+
   # get 'orders', to: 'orders#index'
-  # get 'orders/:id', to: 'orders#show' do
+  # get 'orders/:id', to: 'orders#show1' do
   resources :orders do
     resources :user_orders
-
   end
 
   get 'myfriends_data',  to: 'orders#friends_data'
@@ -31,13 +36,5 @@ Rails.application.routes.draw do
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :orders
-  get 'orders/show' => "orders#show"
-  get "orders/new" => "orders#new"
 
-  get 'orders/add' => 'orders#add'
-
-   
-
-  
 end
