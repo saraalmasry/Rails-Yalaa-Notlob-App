@@ -11,7 +11,9 @@ class GroupsController < ApplicationController
     end
 
     # if params.has_key?(:id)
+      if @groupId != nil
       @groupDetail = Group.find(@groupId)
+      end
     # else
       # @groupDetail = Group.where(user_id: current_user.id).first
 
