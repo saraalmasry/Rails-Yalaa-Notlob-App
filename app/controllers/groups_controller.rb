@@ -1,4 +1,5 @@
 class GroupsController < ApplicationController
+
   def index
     @groups = Group.where(user_id: current_user.id)
     if params.has_key?(:id)
@@ -7,14 +8,21 @@ class GroupsController < ApplicationController
       @groupDetail = Group.where(user_id: current_user.id).first
 
     end
-      @membersIds = GroupMember.where(group_id: params[:id]).select(:user_id)
+      @membersIds = GroupsUser.where(group_id: params[:id]).select(:user_id)
        @members = User.where(id: @membersIds )
+       
+
     end
 
 def create
+   
   @group = Group.new(group_params.merge(user_id: current_user.id))
   @group.save
+  
   redirect_to groups_path
+  # @groupMemberID = User.where(name: group_params[:name]).select(:id)
+  # @groupMember = GroupMember.new(group_id: params[:id] , user_id: @groupMemberID)
+  # @groupMember.save
 end
 
 def destroy
@@ -23,9 +31,7 @@ def destroy
    redirect_to groups_path
 end
 
-def groupMembers
 
-end
 
   private
   def group_params

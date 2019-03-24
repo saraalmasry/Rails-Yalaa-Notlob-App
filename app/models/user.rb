@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :friend_ships, dependent: :destroy
   acts_as_target
 
+  has_and_belongs_to_many :groups
+
   def self.from_omniauth(auth)
       where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email

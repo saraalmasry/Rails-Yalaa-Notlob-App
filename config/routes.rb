@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   
 
   get 'groups/index'
-  resources :groups
+  resources :groups  
+  resources :groups_user
+  
 
   resources :friend_ship , only: [:index, :create, :destroy]
   # get 'friend_ship/Friends'
