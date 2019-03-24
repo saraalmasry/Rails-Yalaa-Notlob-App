@@ -32,6 +32,12 @@ def create
 end
 
 def destroy
+
+  if params.has_key?(:id)
+ @groupId  = params[:id]
+  else
+@groupId = Group.where(user_id: current_user.id).pluck("id").first
+  end
   @group = Group.find(@groupId)
    @group.destroy
    redirect_to groups_path
