@@ -3,8 +3,8 @@ def new
 end
 
 
-def list
-    @orders = Order.where(:user => '6')
+def show
+    @orders = Order.where(:user => current_user.id)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
 end
@@ -19,10 +19,10 @@ def destroy
 
 
 def create
-    @orders = Order.new(order_params)
+    @order = Order.new(params[:order])
 
-    @orders.save
-    redirect_to @order
+    @order.save
+    redirect_to orders_show_path
 
      
 end
@@ -47,7 +47,7 @@ end
 
 private
   def order_params
-    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
+    params.require(:order).permit(:meal, :restourant, :menuImg, :status, :join, :user)
   end
 
 end
