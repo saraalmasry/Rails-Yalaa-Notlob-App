@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_22_220425) do
-
+ActiveRecord::Schema.define(version: 2019_03_23_191317) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -41,6 +39,15 @@ ActiveRecord::Schema.define(version: 2019_03_22_220425) do
     t.index ["user_id"], name: "index_groups_on_user_id"
   end
 
+  create_table "groups_users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_groups_users_on_group_id"
+    t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "target_type", null: false
     t.bigint "target_id", null: false
@@ -65,7 +72,6 @@ ActiveRecord::Schema.define(version: 2019_03_22_220425) do
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.string "meal"
-
     t.string "restaurant"
     t.string "menuImg"
     t.string "status"
@@ -129,6 +135,8 @@ ActiveRecord::Schema.define(version: 2019_03_22_220425) do
   add_foreign_key "group_members", "groups"
   add_foreign_key "group_members", "users"
   add_foreign_key "groups", "users"
+  add_foreign_key "groups_users", "groups"
+  add_foreign_key "groups_users", "users"
   add_foreign_key "orders", "users"
   add_foreign_key "user_orders", "orders"
   add_foreign_key "user_orders", "users"

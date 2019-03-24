@@ -1,5 +1,7 @@
 <%= render 'layouts/navigation' %>
 
+  
+
 <div class="container text-center">
  <h1> Groups </h1>
  <hr />
@@ -17,6 +19,7 @@
   <div class="col-sm-3 myGroups">
    <h3> Your Groups </h3>
    <hr />
+  
        <ul>
       <% @groups.each do |group| %>
        <li>
@@ -39,15 +42,21 @@
      <h3> <%= @groupDetail.name %> </h3>
      <hr />
 
+      <!-- Alerts if success of fail --> 
+   <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
   <div class="container">
 
    <div class="row">
      <div class="col-sm-12">
-       <%= form_tag("/addGroupMember", method: "post") do %>
-       <%= label_tag(:friendName, "Your Friend Name:") %>
-       <%= text_field_tag(:friendName) %>
-       <%= submit_tag("Add") %>
-         <% end %>
+     <%= form_with scope: :group_member  , url: groups_user_index_path do |form|  %>
+      <%= form.label :name %>
+      <%= form.email_field :email %>
+      <%= hidden_field_tag "group_member[group_id]", "#{params[:id]}" %>
+      <%= form.submit("Add") %>
+      <% end %>
      </div>
         <%end%>
     </div>
@@ -75,3 +84,4 @@
 
  </div>
 </div>
+

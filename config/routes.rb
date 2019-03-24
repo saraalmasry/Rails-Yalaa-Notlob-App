@@ -21,9 +21,11 @@ Rails.application.routes.draw do
   # get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
 
   get 'groups/index'
-  resources :groups
+  resources :groups  
+  resources :groups_user
+  
 
-  resources :friend_ship , only: [:index, :create]
+  resources :friend_ship , only: [:index, :create, :destroy]
   # get 'friend_ship/Friends'
 
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'

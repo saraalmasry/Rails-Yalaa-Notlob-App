@@ -1,0 +1,6 @@
+<%= form_with scope: :group_member  , url: groups_user_index_path do |form|  %>
+<%= form.label :email %>
+<%= form.email_field :email %>
+<%= hidden_field_tag "course[user_id]", "#{@user_id}" %>
+<%= form.submit("Add") %>
+  <% end %>
