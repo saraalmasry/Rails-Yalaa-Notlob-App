@@ -66,7 +66,11 @@
 
      <div class="col-md-6">
        <div class="card" style="width: 18rem;">
+       <% if member.image == nil %>
   <%=image_tag "user.png"%>
+        <% else %>
+      <img src = <%= member.image%> >
+        <%end %>
   <div class="card-body">
     <h5 class="card-title"><%= member.name %></h5>
 
