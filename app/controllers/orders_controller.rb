@@ -3,7 +3,7 @@ def new
 end
 
 
-def show
+def list
     @orders = Order.where(:user => '6')
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count

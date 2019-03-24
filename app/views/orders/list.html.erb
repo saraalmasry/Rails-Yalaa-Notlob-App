@@ -6,7 +6,7 @@
 </div>
 
 <div class="container list" >
-<a href="#">Add Order</a>
+<%= link_to 'Add Order', orders_new_path %>
 
 <table class=" table table-striped vertical-center tableList" >
 
@@ -37,10 +37,13 @@
       </td>
       <td><%= order.status %>  </td>
 
-      <td style="width: 4%"> <a href="#">view</a> </td>
+      <td style="width: 4%"> <%= link_to 'view', orders_new_path %> </td>
       <% if order.status == 'waiting' %>
       <td style="width: 4%"> 
-      <%= link_to 'finish',  update_order_path(order) %>
+      <%= link_to 'Finish', 
+      order_path(order), 
+                  method: :put
+                   %> 
       
       </td>
       <td style="width: 4%"> <%= link_to 'Cancel', 
