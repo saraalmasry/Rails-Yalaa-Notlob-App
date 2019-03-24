@@ -6,15 +6,24 @@ Rails.application.routes.draw do
   resources :notifications
 
   get '/users/sign_up'
-  root :to => redirect('/users/sign_in')
+  root 'home#homepage'
+
+  get 'orders_list' => "orders#list"
+  get "orders/new" => "orders#new"
+
+  get 'orders/add' => 'orders#add'
 
   # get 'orders', to: 'orders#index'
-  # get 'orders/:id', to: 'orders#show' do
+  # get 'orders/:id', to: 'orders#show1' do
   resources :orders do
     resources :user_orders
   end
 
   get 'myfriends_data',  to: 'orders#friends_data'
+
+
+  # get "/auth/facebook/callback" => "users/omniauth_callbacks#facebook"
+  # get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
 
   get 'groups/index'
   resources :groups  
@@ -27,9 +36,5 @@ Rails.application.routes.draw do
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :orders
-  get 'orders_list' => "orders#list"
-  get "orders/new" => "orders#new"
 
-  get 'orders/add' => 'orders#add'
 end

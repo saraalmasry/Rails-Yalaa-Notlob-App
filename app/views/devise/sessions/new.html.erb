@@ -1,13 +1,16 @@
 <style>
-body{
+/* .form{
     margin-left: 38%;
-}
+    background-image: url("1.png");
+} */
 h2 {
     margin-left: 15%;
 }
 </style>
-<h2>Yalla Notlob</h2>
 
+<body class="form-background">
+<div class="form">
+<br>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-horizontal'}) do |f| %>
 <div class="form-group">
     <%= f.label :email, class: "col-sm-2 control-label" %>
@@ -44,3 +47,5 @@ h2 {
 </div>
 
 <% end %>
+</div>
+</body>

@@ -10,7 +10,7 @@ class Users::NotificationsController < ActivityNotification::NotificationsContro
   # end
 
   # GET /:target_type/:target_id/notifications/:id
-  # def show
+  # def show1
   #   super
   # end
 

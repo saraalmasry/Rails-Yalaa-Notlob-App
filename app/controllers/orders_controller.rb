@@ -11,7 +11,7 @@ class OrdersController < ApplicationController
   end
 
   def list
-    @orders = Order.where(:user => '1')
+    @orders = Order.where(:user => current_user.id)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
   end
@@ -23,16 +23,14 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     @order.destroy
-    redirect_to :back
-
+    redirect_to orders_list_path
   end
 
   def create
-    @orders = Order.new(order_params)
-
-    @orders.save
-    redirect_to @order
- end
+    @order = Order.new(params[:order])
+    @order.save
+    redirect_to orders_list_path
+  end
 
   def friends_data
     @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)
@@ -41,9 +39,16 @@ class OrdersController < ApplicationController
     render :json => @orders, :include => :user
   end
 
+  def update
+    @order=Order.find(params[:id])
+    @order.update(status: 'finished')
+    redirect_to orders_list_path
+  end
+ 
+
 private
   def order_params
-    params.require(:orders).permit(:meal, :restourant, :menuImg, :status, :join, :user)
+    params.require(:order).permit(:meal, :restourant, :menuImg, :status, :join, :user)
   end
 
 end
