@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   get 'myfriends_data',  to: 'orders#friends_data'
 
-  
+
+  # get "/auth/facebook/callback" => "users/omniauth_callbacks#facebook"
+  # get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
 
   get 'groups/index'
   resources :groups
