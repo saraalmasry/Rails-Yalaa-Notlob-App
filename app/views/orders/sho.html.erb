@@ -1,0 +1,34 @@
+<%= render 'layouts/navigation' %>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-8">
+      <h2>Order Details</h2>
+      <table class="table" style="border: 1px solid #f8f9fa;" >
+        <thead>
+        <tr>
+          <th>Person</th>
+          <th>Item</th>
+          <th>Amount</th>
+          <th>Price</th>
+          <th>Comment</th>
+        </tr>
+        </thead>
+        <tbody>
+          <%= render @order.user_orders %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+  <div class="row">
+    <div style="text-align: center">
+      <h2>Add your order</h2>
+      <%= render 'user_orders/form' %>
+    </div>
+  </div>
+</div>
+
+
+

@@ -3,7 +3,7 @@ def new
 end
 
 
-def list
+def show
     @orders = Order.where(:user => '6')
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
@@ -12,8 +12,8 @@ end
 def destroy
     @order = Order.find(params[:id])
     @order.destroy
+    redirect_to orders_show_path
 
-    # redirect_to "orders_list"
     
   end
 
@@ -27,11 +27,6 @@ def create
      
 end
 
-
-
-
-
-end
   def index
     @orders = Order.last(10).reverse
     @myorders = Order.where(user_id: current_user.id)
@@ -46,6 +41,7 @@ end
     
     @order=Order.find(params[:id])
     @order.update(status: 'finished')
+    redirect_to orders_show_path
   end
  
 
