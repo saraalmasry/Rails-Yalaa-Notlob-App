@@ -1,5 +1,5 @@
 class FriendShip < ApplicationRecord
-  # belongs_to :user
+  belongs_to :user
 
   # acts_as_notifiable :users,
   # Notification targets as :targets is a necessary option
