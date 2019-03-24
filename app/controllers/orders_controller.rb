@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
+def new
+  @order = Order.new
+end
 
-  def new
-  end
 
   def index
     @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)
@@ -10,11 +11,13 @@ class OrdersController < ApplicationController
     @myorders = Order.where(user_id: current_user.id)
   end
 
-  def list
+
+def list
     @orders = Order.where(:user => current_user.id)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
-    @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
-  end
+    @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
+end
+
 
   def show
     @order = Order.find(params[:id])
@@ -26,8 +29,10 @@ class OrdersController < ApplicationController
     redirect_to orders_list_path
   end
 
-  def create
-    @order = Order.new(params[:order])
+def create
+    @order = Order.new(order_params)
+
+
     @order.save
     redirect_to orders_list_path
   end
@@ -48,7 +53,7 @@ class OrdersController < ApplicationController
 
 private
   def order_params
-    params.require(:order).permit(:meal, :restourant, :menuImg, :status, :join, :user)
+    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :join ).merge(:user_id => current_user.id )
   end
 
 end

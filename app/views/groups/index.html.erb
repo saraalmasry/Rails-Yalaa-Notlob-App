@@ -2,21 +2,20 @@
 
 
 
-<div class="container text-center">
+<div class="goupePage container text-center">
  <h1> Groups </h1>
  <hr />
  <div class = "row">
    <div class = "col-md-12">
-<%=  form_with scope: :group , url: groups_path do |form| %>
-<%= form.label :name %>
-<%= form.text_field :name %>
-<%= form.submit("Add") %>
+<%=  form_with scope: :group , url: groups_path , :class => "form-group" do |form| %>
+<%= form.text_field :name , :class => "form-control group-input" , :placeholder => "Enter Group Name" %>
+<%= form.submit "Add" , :class=> "btn btn-primary" %>
   <% end %>
   </div>
  </div>
  <div class = "row">
 
-  <div class="col-sm-3 myGroups">
+  <div class="col-md-3 myGroups">
    <h3> Your Groups </h3>
    <hr />
 
@@ -37,7 +36,7 @@
        </ul>
   </div>
 
-<div class="col-sm-9 groupMembers">
+<div class="col-md-9 groupMembers">
  <% if @groupDetail != nil  %>
      <h3> <%= @groupDetail.name %> </h3>
      <hr />
@@ -50,12 +49,12 @@
   <div class="container">
 
    <div class="row">
-     <div class="col-sm-12">
-     <%= form_with scope: :group_member  , url: groups_user_index_path do |form|  %>
-      <%= form.label :name %>
-      <%= form.email_field :email %>
+     <div class="col-md-12">
+     <%= form_with scope: :group_member , :class => "form-group" , url: groups_user_index_path do |form|  %>
+      
+      <%= form.email_field :email , :class => "form-control group-input" , :placeholder => "Enter Friend Email" %>
       <%= hidden_field_tag "group_member[group_id]", "#{@groupId}" %>
-      <%= form.submit("Add") %>
+      <%= form.submit "Add" , :class => "btn btn-primary" %>
       <% end %>
      </div>
         <%end%>
@@ -65,9 +64,9 @@
       <% @members.each do |member| %>
 
 
-     <div class="col-sm-6">
+     <div class="col-md-6">
        <div class="card" style="width: 18rem;">
-  <%=image_tag "user.png" ,  style: 'height:50%'%>
+  <%=image_tag "user.png"%>
   <div class="card-body">
     <h5 class="card-title"><%= member.name %></h5>
     <a href="#" class="btn btn-primary">unfriend</a>
@@ -84,4 +83,4 @@
 
  </div>
 </div>
-<% console %>
+
