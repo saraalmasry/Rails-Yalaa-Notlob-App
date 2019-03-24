@@ -10,7 +10,7 @@ class Users::SubscriptionsController < ActivityNotification::SubscriptionsContro
   # end
 
   # GET /:target_type/:target_id/subscriptions/:id
-  # def show
+  # def show1
   #   super
   # end
 
