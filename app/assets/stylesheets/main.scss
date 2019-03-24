@@ -1,10 +1,35 @@
-.form{
+.login-form{
+    //width:40%;
+    margin-top: 50px;
+    margin-left: 30%;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:10px; 
+    padding-left:10px;
+    border-radius: 15px 50px;
+    
+    background: rgba(71, 87, 72, 0.3);
+    margin: 30px;
+   
+}
+.reg-form{
+    //width:40%;
     margin-top: 5%;
     margin-left: 30%;
+    
+    //background: rgba(76, 175, 80, 0.3)
+    margin: 30px;
+    background-color: #ffffff;
+    //border: 1px solid black;
+    opacity: 0.6;
+    filter: alpha(opacity=60);
     //  background-color: red;
     // background-image: url("1.png");
 }
 .form-background{
-    background-image: url("1.png");
+    padding-right:30%;
+    padding-left:30%;
+    padding-top:20px;
+    background-image: url("5.png");
 
 }
