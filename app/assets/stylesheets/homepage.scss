@@ -1,0 +1,31 @@
+.background {
+    background-image: url("3.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+    
+   }
+
+   .button {
+    background-color: 	#DC143C
+
+    ; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    font-size:20px;
+    position:absolute;
+  
+    top: 100%;
+    left: 46%;
+    
+  }
+  
+  .button:hover {
+    background-color: 	#E9967A; 
+    color: white;
+  }

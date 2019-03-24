@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   notify_to :users, with_devise: :users, devise_default_routes: true
 
   get '/users/sign_up'
-  root :to => redirect('/users/sign_in')
+  root 'home#homepage'
 
   # get 'orders', to: 'orders#index'
   # get 'orders/:id', to: 'orders#show' do
