@@ -11,12 +11,38 @@
 
 
 
-<%= bootstrap_form_with(model: @order) do |f| %>
-  <%= f.select :meal, [['Breakfast', 1], ['Lunch', 2]], {}, {class: "form-control"} %> 
-   <%= f.text_field :restourant %>
-   <%= f.text_field :status, :input_html => { :id => 'comment' } %>
-   <%= f.file_field  :menuImg %>
-  <%= f.submit "Publish" %>
+
+<%= bootstrap_form_with(model: @order, local: true) do |f| %>
+
+  
+
+ 
+  <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %> 
+ 
+  
+
+  <%= f.text_field :restaurant  , label: "Restaurant" %>
+
+
+ 
+  <%= f.hidden_field :status, :value => 'waiting' %>
+
+  
+
+  
+  <%= f.text_field :menuImg , label: "Menu Image" %>
+
+  <%= f.fields_for :invited_friends do |event_field| %>
+  <%= f.hidden_field :acceptStatus, :value => 'waiting' %>
+  <%= f.hidden_field :order_id %>
+  <%= event_field.text_field :user_id  , label: "Friends"%>
+<% end %>
+
+
+  <div class="actions">
+      <%= f.submit "Save" %>
+  </div>
+
 <% end %>
 
 
