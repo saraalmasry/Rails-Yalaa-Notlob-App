@@ -5,39 +5,79 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
     <ul class="navbar-nav mr-auto">
+
       <li class="nav-item active">
         <%= link_to 'Home', orders_path, class: "nav-link"%>
       </li>
+
       <li class="nav-item">
-        <a class="nav-link" href="#">Friends</a>
+        <%= link_to 'Friends', friend_ship_index_path, class: "nav-link"%>
       </li>
+
       <li class="nav-item">
           <%= link_to 'Groups', groups_path, class: "nav-link"%>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="#">Orders</a>
       </li>
+
     </ul>
+
     <div style="float: right">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-lg"></i>
           </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
         </li>
+
         <li class="nav-item">
           <a class="nav-link" href="#"><img src="" alt="error"></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Username</a>
+          <a class="nav-link" href="#"><%= current_user.name %></a>
         </li>
+
         <li class="nav-item">
-
-            <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-
+           <span class="nav-link"> <%= link_to 'Logout', destroy_user_session_path, method: :delete %> </span>
         </li>
       </ul>
     </div>
   </div>
 </nav>
+
+
+<script>
+    let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
+    setInterval(()=>{
+        fetch("/notifications/").then((data)=>{
+        return data.json();
+    }).then((data)=>{
+        let notifications = JSON.parse(JSON.stringify(data));
+        notification_menu.innerText = "";
+        notifications.forEach((notification) =>{
+
+        let noti_div = document.createElement('div');
+        noti_div.classList.add("dropdown-item");
+        noti_div.innerHTML = notification.body;
+
+        if(notification.not_type === 0){
+            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+        }
+        else if(notification.not_type === 1){
+            noti_div.innerHTML += "<button>Join</button>";
+        }
+        notification_menu.appendChild(noti_div);
+      });
+    });
+    }, 40000);
+</script>

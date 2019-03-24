@@ -24,17 +24,15 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.destroy
     redirect_to :back
-    
+
   end
-  
 
   def create
     @orders = Order.new(order_params)
- 
+
     @orders.save
     redirect_to @order
-
-  end
+ end
 
   def friends_data
     @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)

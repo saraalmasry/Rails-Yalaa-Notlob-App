@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks", confirmations: "confirmations"}
 
+  resources :notifications
+
   get '/users/sign_up'
   root :to => redirect('/users/sign_in')
 
@@ -15,9 +17,11 @@ Rails.application.routes.draw do
   get 'myfriends_data',  to: 'orders#friends_data'
 
   get 'groups/index'
-  resources :groups
+  resources :groups  
+  resources :groups_user
+  
 
-  resources :friend_ship , only: [:index, :create]
+  resources :friend_ship , only: [:index, :create, :destroy]
   # get 'friend_ship/Friends'
 
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
