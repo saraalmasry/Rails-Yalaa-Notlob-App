@@ -1,91 +1,182 @@
-<%= render 'layouts/navigation' %>
+<h1>hhhhhhhhhhh</h1>
+
+<!--<div class="big_container">-->
+  <%#= bootstrap_form_with(model: @order) do |f| %>
+
+<!--  <div class="row">-->
+
+<!--    <div class="form_container col-xs-6" id="left">-->
 
 
-<div class="big_container">
-  <%= bootstrap_form_with(model: @order) do |f| %>
-<div class="row">
 
 
-<div class="form_container col-md-6">
+<!--<div class="form_container col-md-6">-->
 
-  <%= f.select :meal, [['Breakfast', 1], ['Lunch', 2]], {}, {class: "form-control"} %> 
-   <%= f.text_field :restourant %>
-    <div class="form-group">
-      <label>Friends: </label>
-      <select id="dropdown" class="ui fluid search dropdown" multiple="">
-        <% @friends.each do |myfriend| %>
-          <option  value="<%= myfriend.id%>"><%= myfriend.name%></option>
-        <%end%>
+<!--<<<<<<< HEAD-->
+  <%#= f.select :meal, [['Breakfast', 1], ['Lunch', 2]], {}, {class: "form-control"} %>
+   <%#= f.text_field :restourant %>
+<!--    <div class="form-group">-->
+<!--      <label>Friends: </label>-->
+<!--      <select id="dropdown" class="ui fluid search dropdown" multiple="">-->
+        <%# @friends.each do |myfriend| %>
+<!--          <option  value="<%#= myfriend.id%>"><%#= myfriend.name%></option>-->
+        <%#end%>
 
-        <% @CurrentUserGroups.each do |group| %>
-          <option value="<%= group.id%>"><b>@group:</b><%= group.name%> (Group) </option>
-        <%end%>
-      </select>
+        <%# @CurrentUserGroups.each do |group| %>
+<!--          <option value="<%#= group.id%>"><b>@group:</b><%#= group.name%> (Group) </option>-->
+        <%#end%>
+<!--      </select>-->
 
-    </div>
-   <%= f.text_field :status, :input_html => { :id => 'comment' } %>
-   <%= f.file_field  :menuImg %>
-  <%= f.submit "Publish" %>
+<!--    </div>-->
+   <%#= f.text_field :status, :input_html => { :id => 'comment' } %>
+   <%#= f.file_field  :menuImg %>
+  <%#= f.submit "Publish" %>
+<!--=======-->
 
-</div>
+      <%#= bootstrap_form_with(model: @order, local: true) do |f| %>
+<!-->>>>>>> 95cb070b0773ef304c2b20f34654877105fa32e0-->
 
-    <div class="friends_container col-md-6">
-      <div id="friend_div" class="row">
-      </div>
-    </div>
-  <% end %>
+        
 
-</div>
+<!--<<<<<<< HEAD-->
+<!--    <div class="friends_container col-md-6">-->
+<!--      <div id="friend_div" class="row">-->
+<!--      </div>-->
+<!--    </div>-->
+  <%# end %>
+<!--=======-->
+      
+        <%#= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %>
+      
+        
 
-<script>
+        <%#= f.text_field :restaurant  , label: "Restaurant" %>
 
-    $('.ui.dropdown')
-        .dropdown({
-            onAdd: function (value, text, $selectedItem) {
-                if(text.charAt(0) !== "@")
-                {
-                    <% @friends.each do |friend| %>
-                      if( value == <%= friend.id %> ){
-                          let f_div = document.createElement('div');
-                          f_div.classList.add("friend");
-                          f_div.classList.add("col-md-3");
-                          f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";
-                          f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
-                          let dd = document.getElementById("friend_div");
-                          dd.appendChild(f_div);
-                          let hidden_input = document.createElement('input');
-                          hidden_input.type = "hidden";
-                          hidden_input.value = value;
-                          dd.appendChild(hidden_input);
-                      }
-                    <%end%>
-                } else {
-                    let g_id;
-                    <% @CurrentUserGroups.each do |group| %>
-                      if( value == <%= group.id %> ){
-                        g_id = <%= group.id %>
-                      }
-                    <%end%>
-                    <% @user_group.each do |u_g| %>
-                      if( value == <%= u_g.group_id %> ){
-                        <% @friends.each do |friend| %>
-                          if( <%= u_g.user_id %> == <%= friend.id %>) {
-                              let f_div = document.createElement('div');
-                              f_div.classList.add("friend");
-                              f_div.classList.add("col-md-3");
-                              f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";
-                              f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
-                              let dd = document.getElementById("friend_div");
-                              dd.appendChild(f_div);
-                              let hidden_input = document.createElement('input');
-                              hidden_input.type = "hidden";
-                              hidden_input.value = value;
-                              dd.appendChild(hidden_input);
-                          }
-                        <% end %>
-                      }
-                    <%end%>
-                }
-            }
-        });
-</script>
+
+      
+        <%#= f.hidden_field :status, :value => 'waiting' %>
+
+        
+
+        
+        <%#= f.text_field :menuImg , label: "Menu Image" %>
+
+        <%#= f.fields_for :invited_friends do |event_field| %>
+        <%#= f.hidden_field :acceptStatus, :value => 'waiting' %>
+        <%#= f.hidden_field :order_id %>
+        <%#= event_field.text_field :user_id  , label: "Friends"%>
+      <%# end %>
+
+
+<!--        <div class="actions">-->
+            <%#= f.submit "Save" %>
+<!--        </div>-->
+
+      <%# end %>
+
+
+<!--    </div>-->
+
+<!--    <div class="friends_container col-xs-6" id="right">-->
+<!--      <div class="row">-->
+<!--        <div class="friend col-xs-6 ">-->
+          
+<!--          <div class="row">-->
+
+<!--            <div class="col-xs-6">-->
+<!--              <div>-->
+<!--                <img src="" width="70" height="70">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-6">-->
+<!--              <div>-->
+<!--                <h3>Ahmed</h3>-->
+<!--                <a href="#">remove </a>-->
+<!--              </div>-->
+<!--            </div>-->
+          
+<!--          </div>-->
+
+
+          
+<!--        </div>-->
+
+<!--        <div class="friend col-xs-6 ">-->
+          
+<!--          <div class="row">-->
+
+<!--            <div class="col-xs-6">-->
+<!--              <div>-->
+<!--                <img src="" width="70" height="70">-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-xs-6">-->
+<!--              <div>-->
+<!--                <h3>Ahmed</h3>-->
+<!--                <a href="#">remove </a>-->
+<!--              </div>-->
+<!--            </div>-->
+          
+<!--          </div>-->
+
+<!--        </div>-->
+
+<!--      </div>-->
+<!--    </div>-->
+
+<!-->>>>>>> 95cb070b0773ef304c2b20f34654877105fa32e0-->
+
+<!--  </div></div>-->
+
+<!--<script>-->
+
+<!--    $('.ui.dropdown')-->
+<!--        .dropdown({-->
+<!--            onAdd: function (value, text, $selectedItem) {-->
+<!--                if(text.charAt(0) !== "@")-->
+<!--                {-->
+                    <%# @friends.each do |friend| %>
+<!--                      if( value == <%#= friend.id %> ){-->
+<!--                          let f_div = document.createElement('div');-->
+<!--                          f_div.classList.add("friend");-->
+<!--                          f_div.classList.add("col-md-3");-->
+<!--                          f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";-->
+<!--                          f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";-->
+<!--                          let dd = document.getElementById("friend_div");-->
+<!--                          dd.appendChild(f_div);-->
+<!--                          let hidden_input = document.createElement('input');-->
+<!--                          hidden_input.type = "hidden";-->
+<!--                          hidden_input.value = value;-->
+<!--                          dd.appendChild(hidden_input);-->
+<!--                      }-->
+                    <%#end%>
+<!--                } else {-->
+<!--                    let g_id;-->
+                    <%# @CurrentUserGroups.each do |group| %>
+<!--                      if( value == <%#= group.id %> ){-->
+<!--                        g_id = <%#= group.id %>-->
+<!--                      }-->
+                    <%#end%>
+                    <%# @user_group.each do |u_g| %>
+<!--                      if( value == <%#= u_g.group_id %> ){-->
+                        <%# @friends.each do |friend| %>
+<!--                          if( <%#= u_g.user_id %> == <%#= friend.id %>) {-->
+<!--                              let f_div = document.createElement('div');-->
+<!--                              f_div.classList.add("friend");-->
+<!--                              f_div.classList.add("col-md-3");-->
+<!--                              f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";-->
+<!--                              f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";-->
+<!--                              let dd = document.getElementById("friend_div");-->
+<!--                              dd.appendChild(f_div);-->
+<!--                              let hidden_input = document.createElement('input');-->
+<!--                              hidden_input.type = "hidden";-->
+<!--                              hidden_input.value = value;-->
+<!--                              dd.appendChild(hidden_input);-->
+<!--                          }-->
+                        <%# end %>
+<!--                      }-->
+                    <%#end%>
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--</script>-->

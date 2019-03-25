@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
 
   def new
+    @order = Order.new
     # @friend_ships = FriendShip.where(:creator_id => current_user.id)
     # @friend_ships1 = FriendShip.where(:myfriend_id => current_user.id)
     @friendShips=FriendShip.all
@@ -12,7 +13,6 @@ class OrdersController < ApplicationController
       friendShip.myfriend_id == current_user.id
 
     }
-
 
 
     @friendsCreatedByCurrentUser=@friendShipsCreatedByCurrentUser.collect do |friendShip|
@@ -54,11 +54,13 @@ class OrdersController < ApplicationController
     @myorders = Order.where(user_id: current_user.id)
   end
 
-  def list
+
+def list
     @orders = Order.where(:user => current_user.id)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
-    @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = 3").count
-  end
+    @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
+end
+
 
   def show
     @order = Order.find(params[:id])
@@ -70,8 +72,10 @@ class OrdersController < ApplicationController
     redirect_to orders_list_path
   end
 
-  def create
-    @order = Order.new(params[:order])
+def create
+    @order = Order.new(order_params)
+
+
     @order.save
     redirect_to orders_list_path
   end
@@ -92,7 +96,7 @@ class OrdersController < ApplicationController
 
 private
   def order_params
-    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :join, :user)
+    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :join ).merge(:user_id => current_user.id )
   end
 
 end

@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2019_03_23_191317) do
+ActiveRecord::Schema.define(version: 2019_03_24_133024) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -37,6 +36,16 @@ ActiveRecord::Schema.define(version: 2019_03_23_191317) do
     t.datetime "updated_at", null: false
     t.index ["group_id"], name: "index_groups_users_on_group_id"
     t.index ["user_id"], name: "index_groups_users_on_user_id"
+  end
+
+  create_table "invited_friends", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "user_id"
+    t.string "acceptStatus"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_invited_friends_on_order_id"
+    t.index ["user_id"], name: "index_invited_friends_on_user_id"
   end
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -90,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_191317) do
     t.string "first_name"
     t.string "last_name"
     t.datetime "oauth_expires_at"
+    t.string "image"
   end
 
   add_foreign_key "friend_ships", "users", column: "creator_id"
@@ -97,6 +107,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_191317) do
   add_foreign_key "groups", "users"
   add_foreign_key "groups_users", "groups"
   add_foreign_key "groups_users", "users"
+  add_foreign_key "invited_friends", "orders"
+  add_foreign_key "invited_friends", "users"
   add_foreign_key "notifications", "orders"
   add_foreign_key "notifications", "users"
   add_foreign_key "orders", "users"
