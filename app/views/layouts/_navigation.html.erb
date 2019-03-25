@@ -1,3 +1,13 @@
+<html>
+<head>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+</head>
+
+
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <%= link_to 'YallaNotlob', orders_path, class: "navbar-brand"%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +47,15 @@
         </li>
 
         <li class="nav-item">
+        <%= if current_user.image?
+            image_tag(current_user.image, :width => 50, :height => 50, :crop => :fill)
+          else
+            image_tag("user.png", :width => 50, :height => 50, :crop => :fill)
+          end
+          %>
+        </li>
+
+        <li class="nav-item">
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><%= current_user.name %></a>
@@ -55,15 +74,17 @@
     let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
 
     fetch("/notifications/").then((data)=>{
+      
         return data.json();
     }).then((data)=>{
-        let notifications = JSON.parse(JSON.stringify(data));
+    let notifications = JSON.parse(JSON.stringify(data));
+        
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
             let noti_div = document.createElement('div');
             noti_div.classList.add("dropdown-item");
             noti_div.innerHTML = notification.body;
-
+            
             if(notification.not_type === 0){
                 noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
             }
@@ -78,11 +99,11 @@
         fetch("/notifications/").then((data)=>{
         return data.json();
     }).then((data)=>{
-        let notifications = JSON.parse(JSON.stringify(data));
+        notifications = JSON.parse(JSON.stringify(data));
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
 
-        let noti_div = document.createElement('div');
+        noti_div = document.createElement('div');
         noti_div.classList.add("dropdown-item");
         noti_div.innerHTML = notification.body;
 

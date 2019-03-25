@@ -1,89 +1,149 @@
 <%= render 'layouts/navigation' %>
 
-
 <div class="big_container">
 
 <div class="row">
 
-<div class="form_container col-xs-6">
+  <div class="form_container col-xs-6" id="left">
 
 
+    <%= bootstrap_form_with(model: @order, local: true, :id => "order_form")  do |f| %>
 
+      
 
+    
+      <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %> 
+    
+      
 
+      <%= f.text_field :restaurant  , label: "Restaurant" %>
 
-<%= bootstrap_form_with(model: @order, local: true) do |f| %>
-
-  
-
+      <div class="form-group">
+      <label>Friends: </label>
+      <select id="dropdown" class="ui fluid search dropdown" multiple="">
+         <% @friends.each do |myfriend| %>
+           <option  value="<%= myfriend.id %>"><%= myfriend.name%></option>
+         <%end%>
  
-  <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %> 
+         <%@CurrentUserGroups.each do |group| %>
+         <option value="<%= group.id%>"><b>@group:</b><%= group.name%> (Group) </option>
+         <%end%>
+      </select>
  
-  
+   </div>
+    
+      <%= f.hidden_field :status, :value => 'waiting' %>
 
-  <%= f.text_field :restaurant  , label: "Restaurant" %>
+      
+      <%= f.text_field :menuImg , label: "Menu Image" %>
 
-
- 
-  <%= f.hidden_field :status, :value => 'waiting' %>
-
-  
-
-  
-  <%= f.text_field :menuImg , label: "Menu Image" %>
-
-  <%= f.fields_for :invited_friends do |event_field| %>
-  <%= f.hidden_field :acceptStatus, :value => 'waiting' %>
-  <%= f.hidden_field :order_id %>
-  <%= event_field.text_field :user_id  , label: "Friends"%>
-<% end %>
+      <%= f.fields_for :invited_friends do |event_field| %>
+      <%= f.hidden_field :acceptStatus, :value => 'waiting' %>
+      <input type="hidden" id="myfriends_ids" name="myfriends_ids" value="">
+    <% end %>
 
 
-  <div class="actions">
-      <%= f.submit "Save" %>
+      <div class="actions">
+          <%= f.submit "Save" %>
+      </div>
+
+    <% end %>
+
+
   </div>
 
-<% end %>
+  <div class="friends_container col-xs-6" id="right">
+    <div id="friend_div" class="row">
+      <div class="friend col-xs-6 ">
+        
+        <div class="row">
 
-
-</div>
-
-<div class="friends_container col-xs-6">
-  <div class="row">
-    <div class="friend col-sm friend">
-      <div>
-      <div class="row">
-        <div class="col-sm">
-          <img src="" width="100" height="100">
-        </div>
-        <div class="col-sm">
-          <h3>Ahmed</h3>
-          <a href="#">remove </a>
+          <div class="col-xs-6">
+            <div>
+              <img src="" width="70" height="70">
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div>
+              <h3>Ahmed</h3>
+              <a href="#">remove </a>
+            </div>
+          </div>
         </div>
       </div>
+
+      <div class="friend col-xs-6 ">
+        
+        <div class="row">
+
+          <div class="col-xs-6">
+            <div>
+              <img src="" width="70" height="70">
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div>
+              <h3>Ahmed</h3>
+              <a href="#">remove </a>
+            </div>
+          </div>
+        
+        </div>
+
       </div>
-    </div>
-    <div class="friend col-sm">
-      One of three columns
-    </div>
-    <div class="friend col-sm">
-      One of three columns
-    </div>
-    <div class="friend col-sm">
-      One of three columns
-    </div><div class="friend col-sm">
-    One of three columns
-  </div>
-  <div class="friend col-sm">
-      One of three columns
-    </div>
-    <div class="friend col-sm">
-      One of three columns
+
     </div>
   </div>
-</div>
 
 
 </div>
 
 </div>
+
+
+
+<script>
+    let m_f = [];
+    let hidden_input = document.getElementById('myfriends_ids');
+  $('.ui.dropdown')
+      .dropdown({
+      onAdd: function (value, text, $selectedItem) {
+
+          if (text.charAt(0) !== "@") {
+              <% @friends.each do |friend| %>
+              if (value == <%= friend.id %>) {
+                  let f_div = document.createElement('div');
+                  f_div.classList.add("friend");
+                  f_div.classList.add("col-md-3");
+                  f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";
+                  f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
+                  let dd = document.getElementById("friend_div");
+                  dd.appendChild(f_div);
+                  m_f.push(value);
+                  hidden_input.value = m_f;
+              }
+              <%end%>
+          } else {
+              <% @user_group.each do |u_g| %>
+              if (value == <%= u_g.group_id %>) {
+                  <% @friends.each do |friend| %>
+                  console.log(<%= friend.id %>);
+                  if (<%= u_g.user_id %> == <%= friend.id %>) {
+                      console.log("qwdqofejgropu");
+                      let f_div = document.createElement('div');
+                      f_div.classList.add("friend");
+                      f_div.classList.add("col-md-3");
+                      f_div.innerHTML = "<div><img src=<%= friend.image || "" %> width=\"100\" height=\"100\"></div>";
+                      f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
+                      let dd = document.getElementById("friend_div");
+                      dd.appendChild(f_div);
+                      m_f.push(value);
+                      hidden_input.value = m_f;
+                  }
+                  <% end %>
+              }
+              <%end%>
+          }
+      }
+      });
+</script>

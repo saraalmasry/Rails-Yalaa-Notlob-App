@@ -1,8 +1,48 @@
 class OrdersController < ApplicationController
-def new
-  @order = Order.new
-end
 
+  def new
+    @order = Order.new
+    @friendShips=FriendShip.all
+    @friendShipsCreatedByCurrentUser= @friendShips.select{|friendShip|
+      friendShip.creator_id == current_user.id
+
+    }
+    @friendsAddedTheCurrentUse= @friendShips.select{|friendShip|
+      friendShip.myfriend_id == current_user.id
+
+    }
+
+    @friendsCreatedByCurrentUser=@friendShipsCreatedByCurrentUser.collect do |friendShip|
+
+      User.find_by_id!(friendShip.myfriend_id)
+    end
+    @friendsAddedTheCurrentUser=  @friendsAddedTheCurrentUse.collect do |friendShip|
+
+      User.find_by_id!(friendShip.creator_id)
+    end
+    @friends = @friendsCreatedByCurrentUser  +  @friendsAddedTheCurrentUser
+
+    @allGroups=Group.all
+    @CurrentUserGroups= @allGroups.select{|group|
+      group.user_id == current_user.id
+    }
+
+    # @CurrentUserGroups.each do |c|
+    #   puts "==========================="
+    #   puts c.inspect
+    #   puts "==========================="
+    # end
+
+    @user_group = []
+    @CurrentUserGroups.each do |gg|
+      GroupsUser.where(group_id: gg.id).each do |g_u|
+        @user_group.append(g_u)
+      end
+    end
+    # @friends = @friends.uniq
+    # @CurrentUserGroups = @CurrentUserGroups.uniq
+    # @user_group = @user_group.uniq
+  end
 
   def index
     @friend_ships = FriendShip.select("myfriend_id").where(creator_id: current_user.id)
@@ -31,9 +71,19 @@ end
 
 def create
     @order = Order.new(order_params)
-
-
     @order.save
+    puts @order.inspect
+
+    myfriends_ids = params["myfriends_ids"].split(",").map { |s| s.to_i }
+
+    myfriends_ids.each do |myfriend_id|
+      @notification = Notification.create(:body => current_user.name + " invited you to his order",
+                                          :user_id => myfriend_id, :order_id => @order.id,
+                                          :not_type => 1)
+      @invited_friends = InvitedFriend.create(:user_id => myfriend_id, :order_id => @order.id,
+                                          :acceptStatus => "waiting")
+    end
+
     redirect_to orders_list_path
   end
 
