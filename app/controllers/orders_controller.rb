@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
   def new
-    @order = Order.new
+    # @order = Order.new
     # @friend_ships = FriendShip.where(:creator_id => current_user.id)
     # @friend_ships1 = FriendShip.where(:myfriend_id => current_user.id)
     @friendShips=FriendShip.all
