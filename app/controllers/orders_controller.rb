@@ -1,6 +1,50 @@
 class OrdersController < ApplicationController
 
   def new
+    # @friend_ships = FriendShip.where(:creator_id => current_user.id)
+    # @friend_ships1 = FriendShip.where(:myfriend_id => current_user.id)
+    @friendShips=FriendShip.all
+    @friendShipsCreatedByCurrentUser= @friendShips.select{|friendShip|
+      friendShip.creator_id == current_user.id
+
+    }
+    @friendsAddedTheCurrentUse= @friendShips.select{|friendShip|
+      friendShip.myfriend_id == current_user.id
+
+    }
+
+
+
+    @friendsCreatedByCurrentUser=@friendShipsCreatedByCurrentUser.collect do |friendShip|
+
+      User.find_by_id!(friendShip.myfriend_id)
+    end
+    @friendsAddedTheCurrentUser=  @friendsAddedTheCurrentUse.collect do |friendShip|
+
+      User.find_by_id!(friendShip.creator_id)
+    end
+    @friends = @friendsCreatedByCurrentUser  +  @friendsAddedTheCurrentUser
+
+    @allGroups=Group.all
+    @CurrentUserGroups= @allGroups.select{|group|
+      group.user_id == current_user.id
+    }
+
+    @CurrentUserGroups.each do |c|
+      puts "==========================="
+      puts c.inspect
+      puts "==========================="
+    end
+
+    @user_group = []
+    @CurrentUserGroups.each do |gg|
+      GroupsUser.where(group_id: gg.id).each do |g_u|
+        @user_group.append(g_u)
+      end
+    end
+    # @friends = @friends.uniq
+    # @CurrentUserGroups = @CurrentUserGroups.uniq
+    # @user_group = @user_group.uniq
   end
 
   def index
@@ -48,7 +92,7 @@ class OrdersController < ApplicationController
 
 private
   def order_params
-    params.require(:order).permit(:meal, :restourant, :menuImg, :status, :join, :user)
+    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :join, :user)
   end
 
 end
