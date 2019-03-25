@@ -6,7 +6,7 @@ ruby '2.6.0'
 gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem "bootstrap_form", ">= 4.2.0"
-
+gem 'bootstrap-social-rails'
 
 gem "font-awesome-rails"
 gem 'devise', '~> 4.6', '>= 4.6.1'
