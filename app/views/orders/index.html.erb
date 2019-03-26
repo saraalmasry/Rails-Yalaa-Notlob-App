@@ -13,8 +13,10 @@
           <% @myorders.each do |order| %>
             <tr class="table-info">
               <td>
+                <a href="<%= order_path(order) %>">
                 <%= order.meal %> on
                 <%= order.created_at.strftime("%b %d, %Y") %>
+                </a>
               </td>
             </tr>
           <% end %>

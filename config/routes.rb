@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   get 'orders_list' => "orders#list"
 
+  get 'notification_add/:id/:sender_id' => "notifications#add"
+
   resources :orders do
     resources :user_orders
   end

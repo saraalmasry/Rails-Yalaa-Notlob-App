@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_24_133024) do
+ActiveRecord::Schema.define(version: 2019_03_26_141755) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -50,13 +50,16 @@ ActiveRecord::Schema.define(version: 2019_03_24_133024) do
 
   create_table "notifications", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.text "body"
-    t.bigint "user_id"
     t.bigint "order_id"
+    t.integer "not_type"
+    t.integer "status"
+    t.bigint "sender_id"
+    t.bigint "reciever_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "not_type"
     t.index ["order_id"], name: "index_notifications_on_order_id"
-    t.index ["user_id"], name: "index_notifications_on_user_id"
+    t.index ["reciever_id"], name: "index_notifications_on_reciever_id"
+    t.index ["sender_id"], name: "index_notifications_on_sender_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
@@ -110,7 +113,8 @@ ActiveRecord::Schema.define(version: 2019_03_24_133024) do
   add_foreign_key "invited_friends", "orders"
   add_foreign_key "invited_friends", "users"
   add_foreign_key "notifications", "orders"
-  add_foreign_key "notifications", "users"
+  add_foreign_key "notifications", "users", column: "reciever_id"
+  add_foreign_key "notifications", "users", column: "sender_id"
   add_foreign_key "orders", "users"
   add_foreign_key "user_orders", "orders"
   add_foreign_key "user_orders", "users"
