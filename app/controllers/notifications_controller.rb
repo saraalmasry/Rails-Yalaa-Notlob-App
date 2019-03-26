@@ -12,4 +12,6 @@ class NotificationsController < ApplicationController
                                         :sender_id => current_user.id, :order_id => params[:id],
                                         :not_type => 0, :status => 1, :reciever_id => params[:sender_id])
   end
+
+  
 end
