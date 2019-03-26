@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+require 'will_paginate/array'
   def new
     @order = Order.new
     @friendShips=FriendShip.all
@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
 
 
 def list
-    @orders = Order.where(:user => current_user.id)
+    @orders = Order.where(:user => current_user.id).paginate(page: params[:page], per_page: 2)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
 end
@@ -78,8 +78,8 @@ def create
 
     myfriends_ids.each do |myfriend_id|
       @notification = Notification.create(:body => current_user.name + " invited you to his order",
-                                          :user_id => myfriend_id, :order_id => @order.id,
-                                          :not_type => 1)
+                                          :reciever_id => myfriend_id, :order_id => @order.id,
+                                          :not_type => 1, :status => 1, :sender_id => current_user.id)
       @invited_friends = InvitedFriend.create(:user_id => myfriend_id, :order_id => @order.id,
                                           :acceptStatus => "waiting")
     end
@@ -99,7 +99,7 @@ def create
     @order.update(status: 'finished')
     redirect_to orders_list_path
   end
- 
+
 
 private
   def order_params

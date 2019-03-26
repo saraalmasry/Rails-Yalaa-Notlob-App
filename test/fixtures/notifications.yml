@@ -2,10 +2,12 @@
 
 one:
   body: MyText
-  user: one
   order: one
+  not_type: 1
+  status: 1
 
 two:
   body: MyText
-  user: two
   order: two
+  not_type: 1
+  status: 1

@@ -5,10 +5,14 @@ Rails.application.routes.draw do
 
   resources :notifications
 
+  get 'notification_list' => "notifications#list"
+
   get '/users/sign_up'
   root 'home#homepage'
 
   get 'orders_list' => "orders#list"
+
+  get 'notification_add/:id/:sender_id' => "notifications#add"
 
   resources :orders do
     resources :user_orders

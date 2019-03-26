@@ -1,12 +1,9 @@
 <html>
 <head>
-
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
   <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
 </head>
-
-
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
   <%= link_to 'YallaNotlob', orders_path, class: "navbar-brand"%>
@@ -33,7 +30,6 @@
       <li class="nav-item">
         <a class="nav-link" href="/orders_list">Orders</a>
       </li>
-
     </ul>
 
     <div style="float: right">
@@ -72,7 +68,6 @@
 
 <script>
     let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
-
     fetch("/notifications/").then((data)=>{
 
         return data.json();
@@ -89,10 +84,14 @@
                 noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
             }
             else if(notification.not_type === 1){
-                noti_div.innerHTML += "<button>Join</button>";
+                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "/?join="+
+                    notification.sender_id+"\">Join</a>";
             }
             notification_menu.appendChild(noti_div);
         });
+        if(notifications.length == 0) {
+            notification_menu.innerHTML = "<div>No Notification Available</div>";
+        }
     });
 
     setInterval(()=>{
@@ -111,10 +110,16 @@
             noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
         }
         else if(notification.not_type === 1){
-            noti_div.innerHTML += "<button>Join</button>";
+            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id
+            "/"+ notification.sender_id + "/?join=true\">Join</a>";
         }
         notification_menu.appendChild(noti_div);
       });
-    });
+      if(notifications.length == 0) {
+          notification_menu.innerHTML = "<div>No Notification Available</div>";
+      }
+    }).then(()=>{
+
+        })
     }, 40000);
 </script>
