@@ -49,6 +49,7 @@ class FriendShipController < ApplicationController
         redirect_to :action => "index"
       else 
         puts "no"
+        redirect_to :action => "index"
       end
       @friend_ship.errors.full_messages    
     end   
