@@ -10,6 +10,7 @@ gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 gem 'will_paginate-bootstrap', '~> 1.0', '>= 1.0.1'
 gem 'bootstrap-social-rails'
 
+
 gem 'activity_notification'
 
 gem "font-awesome-rails"
