@@ -78,8 +78,8 @@ def create
 
     myfriends_ids.each do |myfriend_id|
       @notification = Notification.create(:body => current_user.name + " invited you to his order",
-                                          :user_id => myfriend_id, :order_id => @order.id,
-                                          :not_type => 1)
+                                          :reciever_id => myfriend_id, :order_id => @order.id,
+                                          :not_type => 1, :status => 1, :sender_id => current_user.id)
       @invited_friends = InvitedFriend.create(:user_id => myfriend_id, :order_id => @order.id,
                                           :acceptStatus => "waiting")
     end
