@@ -30,7 +30,7 @@
 //=======
    display: flex;
    justify-content: center;
-   padding: 40px; 
+   padding: 40px;
 }
 //>>>>>>> 95cb070b0773ef304c2b20f34654877105fa32e0
 
@@ -39,24 +39,24 @@
 //////////////////////////////// list page ////////////////////////////
 
 .header {
-   background-color:  	#f7f4f0;
+   background-color: #f7f4f0;
    height: 100px;
    width: 100%;
 }
 
 .header h2 {
    text-align: center;
-   line-height: 100px; 
+   line-height: 100px;
 }
 
-.container { 
+.container {
    height: 500px;
    width: auto;
    position: relative;
-   
-    //border: 3px solid green; 
+
+    //border: 3px solid green;
  }
- 
+
  .vertical-center {
    margin: 0 auto;
    position: absolute;
@@ -69,11 +69,11 @@
 .table {
    border: solid 2px #ce5b6c;
    margin: 0 auto;
-  
+
 }
 
 .table td , .table th{
-   text-align: center;   
+   text-align: center;
    border-right:  solid 1px #ce5b6c;
 }
 
@@ -86,28 +86,64 @@
 }
 
 
-.form_container , .friends_container { 
+.form_container , .friends_container {
    height: 500px;
    width: 500px;
-   position: relative;  
-   padding: 20px;   
+   position: relative;
+   padding: 20px;
    margin: 5% 0;
  }
 
 
  .friends_container{
 
-    border: 2px solid #ce5b6c; 
+    border: 2px solid #ce5b6c;
     border-radius: 3%;
 
  }
- 
+
  .new_order  , .friend{
    margin: 5% 5% 5% 15%;
-  
+
  }
 
  .new_order {
    position: absolute;
 
  }
+
+ .latest-products{
+   position: absolute;
+       top: 5px;
+       font-size: 20px;
+       left: 30px;
+       background-color: #dd3d44;
+       padding: 0 10px;
+       border-radius: 10px ;
+       color: cornsilk
+ }
+ .orders-list{
+   border: 1px solid black;
+   margin-top: 20px;
+   background-color: rgba(255,255,255,0.5) !important;
+   border-radius: 20px ;
+ }
+ .table-info,
+ .table-info > th,
+ .table-info > td{
+  background-color: rgba(255,255,255,0.1) !important ;
+}
+
+.table-info th, .table-info td, .table-info thead th, .table-info tbody + tbody {
+  border-color: #fff !important;
+}
+ .friends-activity{
+   position: absolute;
+       top: 5px;
+       font-size: 20px;
+       left: 30px;
+       background-color: #dd3d44;
+       padding: 0 10px;
+       border-radius: 10px ;
+       color:cornsilk ;
+}
