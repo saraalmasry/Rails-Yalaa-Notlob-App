@@ -44,13 +44,30 @@ class FriendShipController < ApplicationController
       #  @creator_id= 1
       @myfriend_id=User.find_by_email!(params[:email]).id
       @friend_ship=FriendShip.new( creator_id: @creator_id,myfriend_id: @myfriend_id)
-      if @friend_ship.save
-        puts "ok"
+      if FriendShip.where(creator_id: @creator_id,myfriend_id: @myfriend_id).exists? ||
+        FriendShip.where(creator_id:  @myfriend_id ,myfriend_id: @creator_id).exists?
+        flash[:danger] = "this friend already exists"
         redirect_to :action => "index"
       else 
-        puts "no"
-      end
-      @friend_ship.errors.full_messages    
+
+        if @friend_ship.save
+          puts "ok"
+          flash[:success] = "Your friend has been added."
+          redirect_to :action => "index"
+        else 
+          puts "no"
+          flash[:danger] = "an error happened please try again"
+          redirect_to :action => "index"
+        end
+        @friend_ship.errors.full_messages 
+
+
+
+      end   
+      
+    else
+      flash[:danger] = "this email does not exist"
+      redirect_to :action => "index"
     end   
     #  puts params[:email]
 
@@ -65,16 +82,20 @@ class FriendShipController < ApplicationController
         @friendShipsCreatedByFriend.destroy
         if @friendShipsCreatedByFriend.destroy 
           puts " @friendShipsCreatedByFriend deleted"
+          flash[:success] = "This friend has been removed successfully from your friends list "
         else
           puts " @friendShipsCreatedByFriend not deleted"  
+          flash[:danger] = "an error happened please try again"
         end   
     end 
     if @friendShipsCreatedByCurrentUser
         @friendShipsCreatedByCurrentUser.destroy
         if @friendShipsCreatedByCurrentUser.destroy 
           puts " @friendShipsCreatedByCurrentUser deleted"
+          flash[:success] = "This friend has been removed successfully from your friends list "
         else
           puts " @friendShipsCreatedByCurrentUser deleted"  
+          flash[:danger] = "an error happened please try again"
         end  
     end
 

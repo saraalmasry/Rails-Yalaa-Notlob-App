@@ -9,12 +9,9 @@ Rails.application.routes.draw do
   root 'home#homepage'
 
   get 'orders_list' => "orders#list"
-  get "orders/new" => "orders#new"
 
-  get 'orders/add' => 'orders#add'
+  get 'notification_add/:id/:sender_id' => "notifications#add"
 
-  # get 'orders', to: 'orders#index'
-  # get 'orders/:id', to: 'orders#show1' do
   resources :orders do
     resources :user_orders
   end
