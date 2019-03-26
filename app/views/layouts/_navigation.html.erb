@@ -74,15 +74,17 @@
     let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
 
     fetch("/notifications/").then((data)=>{
+      
         return data.json();
     }).then((data)=>{
-        let notifications = JSON.parse(JSON.stringify(data));
+    let notifications = JSON.parse(JSON.stringify(data));
+        
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
             let noti_div = document.createElement('div');
             noti_div.classList.add("dropdown-item");
             noti_div.innerHTML = notification.body;
-
+            
             if(notification.not_type === 0){
                 noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
             }
@@ -97,11 +99,11 @@
         fetch("/notifications/").then((data)=>{
         return data.json();
     }).then((data)=>{
-        let notifications = JSON.parse(JSON.stringify(data));
+        notifications = JSON.parse(JSON.stringify(data));
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
 
-        let noti_div = document.createElement('div');
+        noti_div = document.createElement('div');
         noti_div.classList.add("dropdown-item");
         noti_div.innerHTML = notification.body;
 

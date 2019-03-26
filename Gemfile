@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem "bootstrap_form", ">= 4.2.0"
 
 
+gem 'activity_notification'
+
 gem "font-awesome-rails"
 gem 'devise', '~> 4.6', '>= 4.6.1'
 
