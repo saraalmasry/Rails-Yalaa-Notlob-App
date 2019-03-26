@@ -16,11 +16,11 @@
     
       
 
-      <%= f.text_field :restaurant  , label: "Restaurant" %>
+      <%= f.text_field :restaurant  , label: "Restaurant", required: true %>
 
       <div class="form-group">
       <label>Friends: </label>
-      <select id="dropdown" class="ui fluid search dropdown" multiple="">
+      <select id="dropdown" class="ui fluid search dropdown" multiple=""  >
          <% @friends.each do |myfriend| %>
            <option  value="<%= myfriend.id %>"><%= myfriend.name%></option>
          <%end%>
@@ -146,4 +146,4 @@
           }
       }
       });
-</script>
+</script> 
