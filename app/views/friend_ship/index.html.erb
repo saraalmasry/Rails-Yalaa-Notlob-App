@@ -7,6 +7,11 @@
   <div class="addFrind">  
    
   <h4>Your friend email:</h4>  
+    <% flash.each do |key, value| %>
+       
+        <div class="alert alert-<%= key %>"><%= value %></div>
+        <%end%>
+    
   <%= form_with  url: friend_ship_index_url , :html => { :method => :post } ,local: true do |form| %>
   <%= form.text_field :email %>
   <%= form.submit %>
@@ -55,4 +60,3 @@
   </div>
 </div>
 </div>
-<%console%>
