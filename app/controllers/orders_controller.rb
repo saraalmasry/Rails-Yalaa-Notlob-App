@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-
+require 'will_paginate/array'
   def new
     @order = Order.new
     # @friend_ships = FriendShip.where(:creator_id => current_user.id)
@@ -56,7 +56,7 @@ class OrdersController < ApplicationController
 
 
 def list
-    @orders = Order.where(:user => current_user.id)
+    @orders = Order.where(:user => current_user.id).paginate(page: params[:page], per_page: 2)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
 end
@@ -92,7 +92,7 @@ def create
     @order.update(status: 'finished')
     redirect_to orders_list_path
   end
- 
+
 
 private
   def order_params

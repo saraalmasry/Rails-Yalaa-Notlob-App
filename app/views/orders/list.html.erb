@@ -13,7 +13,7 @@
 <table class=" table table-striped vertical-center tableList" >
 
   <thead>
-  
+
     <tr>
       <th>Order</th>
       <th>Resturant</th>
@@ -33,33 +33,34 @@
       <td > <%= order.restaurant %>  </td>
       <td style="width: 7%"><%= order.join %>  </td>
       <td style="width: 7%">
-      
+
       <%=  @userOrders.inspect  %>
-      
+
       </td>
       <td><%= order.status %>  </td>
 
       <td style="width: 4%"> <%= link_to 'view', order_path(order) %> </td>
       <% if order.status == 'waiting' %>
-      <td style="width: 4%"> 
-      <%= link_to 'Finish', 
-      order_path(order), 
+      <td style="width: 4%">
+      <%= link_to 'Finish',
+      order_path(order),
                   method: :put
-                   %> 
-      
+                   %>
+
       </td>
-      <td style="width: 4%"> <%= link_to 'Cancel', 
-      order_path(order), 
-                  method: :delete, 
+      <td style="width: 4%"> <%= link_to 'Cancel',
+      order_path(order),
+                  method: :delete,
                   data: { confirm: 'Are you sure?' } %>  </td>
        <% end %>
     </tr>
-   
+
     <% end %>
-    
+
 
  </tbody>
  </table>
- 
-
  </div>
+ <div class="flickr_pagination">
+      <%= will_paginate @orders, previous_label:'<', next_label:'>' ,renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0%>
+  </div>
