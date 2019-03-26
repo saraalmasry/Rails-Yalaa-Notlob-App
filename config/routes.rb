@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :notifications
 
+  get 'notification_list' => "notifications#list"
+
   get '/users/sign_up'
   root 'home#homepage'
 
