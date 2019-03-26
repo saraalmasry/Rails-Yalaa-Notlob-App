@@ -1,0 +1,19 @@
+current directory: /home/mkhaled/Desktop/iTi/Rails-Yalaa-Notlob-App/vendor/cache/ruby/2.6.0/gems/byebug-11.0.0/ext/byebug
+/usr/share/rvm/rubies/ruby-2.6.0/bin/ruby -I /usr/share/rvm/rubies/ruby-2.6.0/lib/ruby/2.6.0 -r ./siteconf20190323-4313-1ufk3tv.rb extconf.rb
+creating Makefile
+
+current directory: /home/mkhaled/Desktop/iTi/Rails-Yalaa-Notlob-App/vendor/cache/ruby/2.6.0/gems/byebug-11.0.0/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/mkhaled/Desktop/iTi/Rails-Yalaa-Notlob-App/vendor/cache/ruby/2.6.0/gems/byebug-11.0.0/ext/byebug
+make "DESTDIR="
+compiling breakpoint.c
+compiling byebug.c
+compiling context.c
+compiling locker.c
+compiling threads.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/mkhaled/Desktop/iTi/Rails-Yalaa-Notlob-App/vendor/cache/ruby/2.6.0/gems/byebug-11.0.0/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20190323-4313-1mj75bk/byebug
