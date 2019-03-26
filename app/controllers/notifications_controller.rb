@@ -5,4 +5,7 @@ class NotificationsController < ApplicationController
     render :json => @mynotifications
   end
 
+  def create
+  end
+
 end
