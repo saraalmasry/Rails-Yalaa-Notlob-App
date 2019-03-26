@@ -33,3 +33,12 @@
   </div>
 </div>
 
+<script>
+    let url = window.location.href;
+    let index = url.indexOf('?join');
+    const urlParams = new URLSearchParams(window.location.search);
+    if( index != -1) {
+        let q = url.split('/');
+        fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
+    }
+</script>
