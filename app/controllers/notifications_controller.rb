@@ -13,5 +13,7 @@ class NotificationsController < ApplicationController
                                         :not_type => 0, :status => 1, :reciever_id => params[:sender_id])
   end
 
-  
+  def list
+    @notification = Notification.where(:reciever_id => current_user.id)
+  end
 end
