@@ -20,10 +20,7 @@ class User < ApplicationRecord
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.password = Devise.friendly_token[0,20]
-      # user.oauth_token = auth.credentials.token
-      # user.first_name = auth.auth.info.first_name
-      # user.last_name = auth.auth.info.last_name
-      # user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+
   end
 end
 end
