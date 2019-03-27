@@ -53,7 +53,7 @@ require 'will_paginate/array'
 
 
 def list
-    @orders = Order.where(:user => current_user.id).paginate(page: params[:page], per_page: 2)
+    @orders = Order.where(:user => current_user.id).reverse.paginate(page: params[:page], per_page: 2)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
 end

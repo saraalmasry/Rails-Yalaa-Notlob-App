@@ -1,3 +1,4 @@
+<%= render 'layouts/navigation' %>
 
 
 <div class="container">
@@ -46,29 +47,37 @@
 </div>
 
 <script>
-    let url = window.location.href;
-    let index = url.indexOf('?join');
+    var url = window.location.href;
+    var index = url.indexOf('?join');
     const urlParams = new URLSearchParams(window.location.search);
-    let q = url.split('/');
+    var q = url.split('/');
     if( index != -1) {
         fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
     }
-    let h = document.getElementById('h2');
+    var h = document.getElementById('h2');
 
-    let row = document.getElementById("row");
+    var row = document.getElementById("row");
     fetch("/notification_join/"+ q[4]).then((data)=>{
         return data.json();
     }).then((data) => {
         row.innerHTML = "";
-        let user_joined = JSON.parse(JSON.stringify(data));
+        var user_joined = JSON.parse(JSON.stringify(data));
         h.innerHTML = user_joined.length + " | joined friends";
         user_joined.forEach((joined) => {
-            let col = document.createElement('div');
+            var col = document.createElement('div');
             col.classList.add("col-md-6");
-            let im_div = document.createElement('div');
-            let img = document.createElement('img');
-            img.src = joined.image;
-            im_div.appendChild(img);
+            var im_div = document.createElement('div');
+            if(!joined.image) {
+                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
+            }else {
+                var mmmmm = document.createElement('img');
+                mmmmm.src = joined.image;
+                mmmmm.style.width = 50+'px';
+                mmmmm.style.height= 50+'px';
+                im_div.appendChild(mmmmm);
+            }
+
+
             let name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
             let rm_div = document.createElement('div');
