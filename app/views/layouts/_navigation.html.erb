@@ -124,10 +124,8 @@
             }
             else {
                 notification_menu.innerHTML = "";
-
                 notifications.forEach((notification) => {
-
-                    noti_div = document.createElement('div');
+                    var noti_div = document.createElement('div');
                     noti_div.classList.add("dropdown-item");
                     noti_div.innerHTML = notification.body;
 
@@ -135,11 +133,12 @@
                         noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id + "\">Order</a>";
                     }
                     else if (notification.not_type == 1) {
-                        noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id
-                        "/" + notification.sender_id + "/?join=true\">Join</a>";
+                        noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id + "/?join=" +
+                            notification.sender_id + "\">Join</a>";
                     }
                     notification_menu.appendChild(noti_div);
                 });
+
                 notification_menu.innerHTML += "<div class='dropdown-item'>";
                 notification_menu.innerHTML += "<a href=\"/notification_list/\">view all notifications</a></div>";
             }
