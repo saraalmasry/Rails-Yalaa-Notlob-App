@@ -27,21 +27,13 @@ require 'will_paginate/array'
       group.user_id == current_user.id
     }
 
-    # @CurrentUserGroups.each do |c|
-    #   puts "==========================="
-    #   puts c.inspect
-    #   puts "==========================="
-    # end
-
     @user_group = []
     @CurrentUserGroups.each do |gg|
       GroupsUser.where(group_id: gg.id).each do |g_u|
         @user_group.append(g_u)
       end
     end
-    # @friends = @friends.uniq
-    # @CurrentUserGroups = @CurrentUserGroups.uniq
-    # @user_group = @user_group.uniq
+
   end
 
   def index
@@ -53,9 +45,10 @@ require 'will_paginate/array'
 
 
 def list
-    @orders = Order.where(:user => current_user.id).paginate(page: params[:page], per_page: 2)
+    @orders = Order.where(:user => current_user.id).reverse.paginate(page: params[:page], per_page: 2)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
     @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
+
 end
 
 
@@ -75,7 +68,6 @@ def create
     myfriends_ids = params["myfriends_ids"].split(",").map { |s| s.to_i }
     @order.join = myfriends_ids.length
     @order.save
-    puts @order.inspect
 
     myfriends_ids.each do |myfriend_id|
       @notification = Notification.create(:body => current_user.name + " invited you to his order",

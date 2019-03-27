@@ -7,8 +7,7 @@ class NotificationsController < ApplicationController
 
   def join
     users = User.all
-    mynotifications = Notification.where(reciever_id: current_user.id,
-                                          not_type: 0, order_id: params[:id]).reverse
+    mynotifications = Notification.where(not_type: 0, order_id: params[:id]).reverse
     @joined_friends = []
     mynotifications.each do |note|
       @joined_friends.append(users.find(note.sender_id))

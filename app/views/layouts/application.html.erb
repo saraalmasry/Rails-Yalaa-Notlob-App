@@ -14,7 +14,9 @@
     </head>
 
   <body>
-
+  <% if current_user %>
+    <%= render 'layouts/navigation' %>
+  <% end %>
  <section class="shadow">
    <%= yield %>
  </section>
