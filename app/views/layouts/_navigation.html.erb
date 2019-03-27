@@ -97,10 +97,10 @@
                 noti_div.classList.add("dropdown-item");
                 noti_div.innerHTML = notification.body;
 
-                if (notification.not_type === 0) {
+                if (notification.not_type == 0) {
                     noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id + "\">Order</a>";
                 }
-                else if (notification.not_type === 1) {
+                else if (notification.not_type == 1) {
                     noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id + "/?join=" +
                         notification.sender_id + "\">Join</a>";
                 }
@@ -131,10 +131,10 @@
                     noti_div.classList.add("dropdown-item");
                     noti_div.innerHTML = notification.body;
 
-                    if (notification.not_type === 0) {
+                    if (notification.not_type == 0) {
                         noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id + "\">Order</a>";
                     }
-                    else if (notification.not_type === 1) {
+                    else if (notification.not_type == 1) {
                         noti_div.innerHTML += "<a href=\"/orders/" + notification.order_id
                         "/" + notification.sender_id + "/?join=true\">Join</a>";
                     }
