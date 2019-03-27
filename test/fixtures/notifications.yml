@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  body: MyString
+  body: MyText
   order: one
-  user: one
+  not_type: 1
+  status: 1
 
 two:
-  body: MyString
+  body: MyText
   order: two
-  user: two
+  not_type: 1
+  status: 1

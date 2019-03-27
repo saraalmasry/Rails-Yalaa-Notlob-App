@@ -1,0 +1,125 @@
+<html>
+<head>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+</head>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <%= link_to 'YallaNotlob', orders_path, class: "navbar-brand"%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item active">
+        <%= link_to 'Home', orders_path, class: "nav-link"%>
+      </li>
+
+      <li class="nav-item">
+        <%= link_to 'Friends', friend_ship_index_path, class: "nav-link"%>
+      </li>
+
+      <li class="nav-item">
+          <%= link_to 'Groups', groups_path, class: "nav-link"%>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/orders_list">Orders</a>
+      </li>
+    </ul>
+
+    <div style="float: right">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-lg"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          </div>
+        </li>
+
+        <li class="nav-item">
+        <%= if current_user.image?
+            image_tag(current_user.image,   :width => 50, :height => 50, :crop => :fill , :class => "rounded-circle" )
+          else
+            image_tag("user.png", :width => 50, :height => 50, :crop => :fill , :class => "rounded-circle")
+          end
+          %>
+        </li>
+
+        <li class="nav-item">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><%= current_user.name %></a>
+        </li>
+
+        <li class="nav-item">
+           <span class="nav-link"> <%= link_to 'Logout', destroy_user_session_path, method: :delete , :class => "nav-link" %> </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<script>
+    let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
+    fetch("/notifications/").then((data)=>{
+
+        return data.json();
+    }).then((data)=>{
+    let notifications = JSON.parse(JSON.stringify(data));
+
+        notification_menu.innerText = "";
+        notifications.forEach((notification) =>{
+            let noti_div = document.createElement('div');
+            noti_div.classList.add("dropdown-item");
+            noti_div.innerHTML = notification.body;
+
+            if(notification.not_type === 0){
+                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+            }
+            else if(notification.not_type === 1){
+                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "/?join="+
+                    notification.sender_id+"\">Join</a>";
+            }
+            notification_menu.appendChild(noti_div);
+        });
+        if(notifications.length == 0) {
+            notification_menu.innerHTML = "<div>No Notification Available</div>";
+        }
+    });
+
+    setInterval(()=>{
+        fetch("/notifications/").then((data)=>{
+        return data.json();
+    }).then((data)=>{
+        notifications = JSON.parse(JSON.stringify(data));
+        notification_menu.innerText = "";
+        notifications.forEach((notification) =>{
+
+        noti_div = document.createElement('div');
+        noti_div.classList.add("dropdown-item");
+        noti_div.innerHTML = notification.body;
+
+        if(notification.not_type === 0){
+            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+        }
+        else if(notification.not_type === 1){
+            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id
+            "/"+ notification.sender_id + "/?join=true\">Join</a>";
+        }
+        notification_menu.appendChild(noti_div);
+      });
+      if(notifications.length == 0) {
+          notification_menu.innerHTML = "<div>No Notification Available</div>";
+      }
+    }).then(()=>{
+
+        })
+    }, 40000);
+</script>

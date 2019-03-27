@@ -1,19 +1,90 @@
-<div class="container">
+<%= render 'layouts/navigation' %>
+
+
+
+<div class="goupePage container text-center">
  <h1> Groups </h1>
  <hr />
  <div class = "row">
    <div class = "col-md-12">
-<%= form_tag("/addGroup", method: "post") do %>
-<%= label_tag(:q, "Group:") %>
-<%= text_field_tag(:q) %>
-<%= submit_tag("Add") %>
+<%=  form_with scope: :group , url: groups_path , :class => "form-group" do |form| %>
+<%= form.text_field :name , :class => "form-control group-input" , :placeholder => "Enter Group Name" %>
+<%= form.submit "Add" , :class=> "btn btn-primary" %>
   <% end %>
   </div>
  </div>
  <div class = "row">
-  <div class="col-sm-3 myGroups">
-   <h3> My Groups </h3>
+
+  <div class="col-md-3 myGroups">
+   <h3> Your Groups </h3>
+   <hr />
+
+       <ul>
+      <% @groups.each do |group| %>
+       <li>
+         <%= link_to group.name , :id => group.id %>
+
+<%= link_to ('<i class="fas fa-times fa-2x"> </i>').html_safe , [group] ,
+  method: :delete,
+  data: {confirm: 'Are You Sure To delete Group' } %>
+
+
+      <%= link_to  ('<i class="fas fa-user-plus fa-2x"></i> ').html_safe , :id => group.id %>
+       </li>
+       <hr />
+        <% end %>
+       </ul>
+  </div>
+
+<div class="col-md-9 groupMembers">
+ <% if @groupDetail != nil  %>
+     <h3> <%= @groupDetail.name %> </h3>
+     <hr />
+
+      <!-- Alerts if success of fail -->
+   <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+
+  <div class="container">
+
+   <div class="row">
+     <div class="col-md-12">
+     <%= form_with scope: :group_member , :class => "form-group" , url: groups_user_index_path do |form|  %>
+      
+      <%= form.email_field :email , :class => "form-control group-input" , :placeholder => "Enter Friend Email" %>
+      <%= hidden_field_tag "group_member[group_id]", "#{@groupId}" %>
+      <%= form.submit "Add" , :class => "btn btn-primary" %>
+      <% end %>
+     </div>
+        <%end%>
+    </div>
+
+    <div class="row">
+      <% @members.each do |member| %>
+
+
+     <div class="col-md-6">
+       <div class="card" style="width: 18rem;">
+       <% if member.image == nil %>
+  <%=image_tag "user.png"%>
+        <% else %>
+      <img src = <%= member.image%> >
+        <%end %>
+  <div class="card-body">
+    <h5 class="card-title"><%= member.name %></h5>
 
   </div>
+</div>
+     </div>
+
+     <% end %>
+    </div>
+  </div>
+</div>
+
+</div>
+
  </div>
 </div>
+
