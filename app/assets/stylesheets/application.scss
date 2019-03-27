@@ -20,7 +20,77 @@
 
 // @import "font-awesome";
 
-
+body {
+  background-image: url("burger.jpg")  !important;
+}
+.shadow{
+  background: rgba(0,0,0,0.4) ;
+  height: 100% ;
+}
 .btn-primary{
+    background-color: #dd3d44;
+}
+
+.login-form{
+    //width:40%;
+    margin-top: 50px;
+    margin-left: 30%;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:10px;
+    padding-left:10px;
+    border-radius: 15px 50px;
+
+    background: rgba(71, 87, 72, 0.3);
+    margin: 30px;
+
+}
+// social login form
+
+
+.reg-form{
+    margin-top: 50px;
+    margin-left: 30%;
+    padding-top:10px;
+    padding-bottom:10px;
+    padding-right:10px;
+    padding-left:10px;
+    border-radius: 15px 50px;
+
+    background: rgba(71, 87, 72, 0.3);
+    margin: 30px;
+}
+.form-background{
+    padding-right:30%;
+    padding-left:30%;
+    padding-top:20px;
+    background-image: url("5.png");
+    background-repeat:no-repeat;
+    background-size:cover;
+
+}
+
+
+// Navbar
+
+.navbar-dark .navbar-nav a.nav-link{
+    color: cornsilk
+}
+.bg-dark {
+  background-color: #dd3d44 !important ;
+
+}
+nav{
+    margin-bottom: 50px ;
+}
+
+// application fonts
+h1 , h3 {
+    font-family: 'Baloo Chettan', cursive;
+}
+
+// primary colors
+
+input.btn.btn-primary , .btn-primary{
     background-color: #333;
 }

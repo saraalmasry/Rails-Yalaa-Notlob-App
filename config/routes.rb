@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get 'orders_list' => "orders#list"
 
   get 'notification_add/:id/:sender_id' => "notifications#add"
+  get 'notification_mark' => "notifications#mark"
+  get 'notification_join/:id' => "notifications#join"
+
 
   resources :orders do
     resources :user_orders
@@ -25,9 +28,9 @@ Rails.application.routes.draw do
   # get "/auth/google_oauth2/callback" => "users/omniauth_callbacks#google_oauth2"
 
   get 'groups/index'
-  resources :groups  
+  resources :groups
   resources :groups_user
-  
+
 
   resources :friend_ship , only: [:index, :create, :destroy]
 
@@ -37,5 +40,4 @@ Rails.application.routes.draw do
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
 end
