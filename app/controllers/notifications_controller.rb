@@ -24,10 +24,15 @@ class NotificationsController < ApplicationController
                                         :not_type => 0, :status => 1, :reciever_id => params[:sender_id])
   end
 
+
   def mark
     @notifications=Notification.where(reciever_id: current_user.id, status: 1);
     @notifications.update_all(:status => 0);
     redirect_to orders_list_path
   end
 
+
+  def list
+    @notification = Notification.where(:reciever_id => current_user.id)
+  end
 end

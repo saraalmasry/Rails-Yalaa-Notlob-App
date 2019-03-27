@@ -9,18 +9,13 @@
 
     <%= bootstrap_form_with(model: @order, local: true, :id => "order_form")  do |f| %>
 
-      
-
-    
       <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %> 
-    
-      
 
-      <%= f.text_field :restaurant  , label: "Restaurant" %>
+      <%= f.text_field :restaurant  , label: "Restaurant", required: true %>
 
       <div class="form-group">
       <label>Friends: </label>
-      <select id="dropdown" class="ui fluid search dropdown" multiple="">
+      <select id="dropdown" class="ui fluid search dropdown" multiple=""  >
          <% @friends.each do |myfriend| %>
            <option  value="<%= myfriend.id %>"><%= myfriend.name%></option>
          <%end%>
@@ -116,6 +111,7 @@
       }
 
       });
+
   function rm(value, x) {
       let removed_f = document.getElementById(value);
       if(removed_f) {
