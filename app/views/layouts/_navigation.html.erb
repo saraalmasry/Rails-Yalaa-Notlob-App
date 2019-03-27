@@ -67,8 +67,8 @@
 
 
 <script>
-  let cnt=0;
-  let update = () => {
+  var cnt=0;
+  var update = () => {
     cnt++;
     if(cnt == 4)
     {
@@ -76,17 +76,17 @@
     }
   }
 
-    let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
+    var notification_menu = document.getElementsByClassName("dropdown-menu")[0];
 
     fetch("/notifications/").then((data)=>{
 
         return data.json();
     }).then((data)=>{
-    let notifications = JSON.parse(JSON.stringify(data));
+    var notifications = JSON.parse(JSON.stringify(data));
 
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
-            let noti_div = document.createElement('div');
+            var noti_div = document.createElement('div');
             noti_div.classList.add("dropdown-item");
             noti_div.innerHTML = notification.body;
 
@@ -112,7 +112,7 @@
         notification_menu.innerText = "";
         notifications.forEach((notification) =>{
 
-        noti_div = document.createElement('div');
+        var noti_div = document.createElement('div');
         noti_div.classList.add("dropdown-item");
         noti_div.innerHTML = notification.body;
 
