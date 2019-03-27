@@ -1,5 +1,5 @@
+<%= render 'layouts/navigation' %>
 
-<%#= render 'layouts/navigation' %>
 
 <div class="container">
 
@@ -14,7 +14,7 @@
           <th>Amount</th>
           <th>Price</th>
           <th>Comment</th>
-          <th>Action</th>
+          <th>Actions</th>
 
         </tr>
         </thead>
@@ -51,7 +51,7 @@
 <script>
     var url = window.location.href;
     var index = url.indexOf('?join');
-    var urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     var q = url.split('/');
     if( index != -1) {
         fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
@@ -69,9 +69,17 @@
             var col = document.createElement('div');
             col.classList.add("col-md-6");
             var im_div = document.createElement('div');
-            var img = document.createElement('img');
-            img.src = joined.image;
-            im_div.appendChild(img);
+            if(!joined.image) {
+                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
+            }else {
+                var mmmmm = document.createElement('img');
+                mmmmm.src = joined.image;
+                mmmmm.style.width = 50+'px';
+                mmmmm.style.height= 50+'px';
+                im_div.appendChild(mmmmm);
+            }
+
+
             var name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
             var rm_div = document.createElement('div');

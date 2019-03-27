@@ -5,10 +5,12 @@
   <td><%= user_order.amount %></td>
   <td><%= user_order.price %></td>
   <td><%= user_order.comment %></td>
+
+  <% if user_order.user_id == current_user.id && @order.status == "waiting" %>
   <td style="width: 4%"> <%= link_to 'Delete',
   user_order_path(user_order),
               method: :delete,
               data: { confirm: 'Are you sure?' } %>  </td>
-
+ <% end %>
 </tr>
 
