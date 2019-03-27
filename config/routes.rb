@@ -30,6 +30,8 @@ Rails.application.routes.draw do
   
 
   resources :friend_ship , only: [:index, :create, :destroy]
+
+  resources :user_orders
   # get 'friend_ship/Friends'
 
   # post 'friend_ship/Friends' => 'friend_ship#addFriend'
