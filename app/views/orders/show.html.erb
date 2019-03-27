@@ -1,5 +1,5 @@
+<%= render 'layouts/navigation' %>
 
-<%#= render 'layouts/navigation' %>
 
 <div class="container">
 
@@ -14,8 +14,6 @@
           <th>Amount</th>
           <th>Price</th>
           <th>Comment</th>
-          <th>Action</th>
-
         </tr>
         </thead>
         <tbody>
@@ -51,7 +49,7 @@
 <script>
     var url = window.location.href;
     var index = url.indexOf('?join');
-    var urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search);
     var q = url.split('/');
     if( index != -1) {
         fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
@@ -69,13 +67,21 @@
             var col = document.createElement('div');
             col.classList.add("col-md-6");
             var im_div = document.createElement('div');
-            var img = document.createElement('img');
-            img.src = joined.image;
-            im_div.appendChild(img);
-            var name_div = document.createElement('div');
+            if(!joined.image) {
+                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
+            }else {
+                var mmmmm = document.createElement('img');
+                mmmmm.src = joined.image;
+                mmmmm.style.width = 50+'px';
+                mmmmm.style.height= 50+'px';
+                im_div.appendChild(mmmmm);
+            }
+
+
+            let name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
-            var rm_div = document.createElement('div');
-            var rm_link = document.createElement('a');
+            let rm_div = document.createElement('div');
+            let rm_link = document.createElement('a');
             rm_link.href = "";
             rm_div.appendChild(rm_link);
             col.appendChild(im_div);
@@ -89,19 +95,19 @@
           return data.json();
       }).then((data) =>{
           row.innerHTML = "";
-          var user_joined = JSON.parse(JSON.stringify(data));
+          let user_joined = JSON.parse(JSON.stringify(data));
           h.innerHTML = user_joined.length + " | joined friends";
             user_joined.forEach((joined)=>{
-            var col = document.createElement('div');
+            let col = document.createElement('div');
             col.classList.add("col-md-6");
-            var im_div = document.createElement('div');
-            var img = document.createElement('img');
+            let im_div = document.createElement('div');
+            let img = document.createElement('img');
             img.src = joined.image;
             im_div.appendChild(img);
-            var name_div = document.createElement('div');
+            let name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
-            var rm_div = document.createElement('div');
-            var rm_link = document.createElement('a');
+            let rm_div = document.createElement('div');
+            let rm_link = document.createElement('a');
             rm_link.href = "";
             rm_div.appendChild(rm_link);
             col.appendChild(im_div);
