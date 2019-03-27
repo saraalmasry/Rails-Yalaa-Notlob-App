@@ -1,5 +1,5 @@
 
-<%= render 'layouts/navigation' %>
+<%#= render 'layouts/navigation' %>
 
 <div class="container">
 
@@ -17,28 +17,96 @@
         </tr>
         </thead>
         <tbody>
-
-        <%= render @order.user_orders %>
-
+          <%= render @order.user_orders %>
         </tbody>
       </table>
-
+    </div>
+    <div class="col-md-4">
+      <h2><%= @invited_friends.count %> | invited friends</h2>
+      <div class="row">
+        <% @invited_friends.each do |invited_friend| %>
+          <div class="col-md-6">
+            <div><img src="<%= invited_friend.user.image %>"></div>
+            <div><%= invited_friend.user.name %></div>
+            <div><a href="">remove</a></div>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div style="text-align: center">
+    <div style="text-align: center" class="col-md-8">
       <h2>Add your order</h2>
       <%= render 'user_orders/form' %>
+    </div>
+    <div id="joined_friends" class="col-md-4">
+      <h2 id="h2">0 | joined friends</h2>
+      <div id="row" class="row"></div>
     </div>
   </div>
 </div>
 
 <script>
-    let url = window.location.href;
-    let index = url.indexOf('?join');
-    const urlParams = new URLSearchParams(window.location.search);
+    var url = window.location.href;
+    var index = url.indexOf('?join');
+    var urlParams = new URLSearchParams(window.location.search);
+    var q = url.split('/');
     if( index != -1) {
-        let q = url.split('/');
         fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
     }
+    var h = document.getElementById('h2');
+
+    var row = document.getElementById("row");
+    fetch("/notification_join/"+ q[4]).then((data)=>{
+        return data.json();
+    }).then((data) => {
+        row.innerHTML = "";
+        var user_joined = JSON.parse(JSON.stringify(data));
+        h.innerHTML = user_joined.length + " | joined friends";
+        user_joined.forEach((joined) => {
+            var col = document.createElement('div');
+            col.classList.add("col-md-6");
+            var im_div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = joined.image;
+            im_div.appendChild(img);
+            var name_div = document.createElement('div');
+            name_div.innerHTML = joined.name;
+            var rm_div = document.createElement('div');
+            var rm_link = document.createElement('a');
+            rm_link.href = "";
+            rm_div.appendChild(rm_link);
+            col.appendChild(im_div);
+            col.appendChild(name_div);
+            col.appendChild(rm_div);
+            row.appendChild(col);
+        });
+    });
+    setInterval(()=>{
+      fetch("/notification_join/"+ q[4]).then((data)=>{
+          return data.json();
+      }).then((data) =>{
+          row.innerHTML = "";
+          var user_joined = JSON.parse(JSON.stringify(data));
+          h.innerHTML = user_joined.length + " | joined friends";
+            user_joined.forEach((joined)=>{
+            var col = document.createElement('div');
+            col.classList.add("col-md-6");
+            var im_div = document.createElement('div');
+            var img = document.createElement('img');
+            img.src = joined.image;
+            im_div.appendChild(img);
+            var name_div = document.createElement('div');
+            name_div.innerHTML = joined.name;
+            var rm_div = document.createElement('div');
+            var rm_link = document.createElement('a');
+            rm_link.href = "";
+            rm_div.appendChild(rm_link);
+            col.appendChild(im_div);
+            col.appendChild(name_div);
+            col.appendChild(rm_div);
+            row.appendChild(col);
+          });
+      });
+    }, 40000);
 </script>
