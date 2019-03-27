@@ -55,19 +55,19 @@
 
 <script>
 
-  let friend = document.getElementById("f_activity");
+  var friend = document.getElementById("f_activity");
 
   setInterval(()=>{
     fetch("/myfriends_data").then((data)=>{
         return data.json();
     }).then((data)=>{
-        let activities = JSON.parse(JSON.stringify(data));
+        var activities = JSON.parse(JSON.stringify(data));
         // console.log(activities[0]);
         friend.innerText = "";
         activities.forEach((activity) =>{
-          let tr = document.createElement('tr');
+          var tr = document.createElement('tr');
           tr.classList.add("table-info");
-          let td = document.createElement('td');
+          var td = document.createElement('td');
           td.innerHTML = activity.user.name + " has created an " +
               "<a href=\"/orders/" +activity.id + "\">Order</a>"+ " for " + activity.meal +
               " from " + activity.restaurant;
