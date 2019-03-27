@@ -112,13 +112,13 @@
 
  }
 
- .latest-products{
+ .latest-products , .friends-activity{
    position: absolute;
        top: 5px;
        font-size: 20px;
        left: 30px;
        background-color: #dd3d44;
-       padding: 0 10px;
+       padding: 5px;
        border-radius: 10px ;
        color: cornsilk
  }
@@ -136,14 +136,4 @@
 
 .table-info th, .table-info td, .table-info thead th, .table-info tbody + tbody {
   border-color: #fff !important;
-}
- .friends-activity{
-   position: absolute;
-       top: 5px;
-       font-size: 20px;
-       left: 30px;
-       background-color: #dd3d44;
-       padding: 0 10px;
-       border-radius: 10px ;
-       color:cornsilk ;
 }

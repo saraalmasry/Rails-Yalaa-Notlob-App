@@ -1,5 +1,5 @@
 <%#= render 'layouts/navigation' %>
-<body >
+<body class="container">
 <div>
 
   <h1>Friends</h1>
@@ -22,11 +22,7 @@
   <%= form.submit %>
   <% end %>
 
-      <%= form_with url: friend_ship_index_url, :html => {:method => :post}, local: true do |form| %>
-        <%= form.email_field :email, class: "form-control col-sm-6" %>
-        <br>
-        <%= form.submit %>
-      <% end %>
+  
 
     </div>
 
