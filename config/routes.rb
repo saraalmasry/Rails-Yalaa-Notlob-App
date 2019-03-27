@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :groups
   resources :groups_user
 
+  resources :user_orders
 
   resources :friend_ship , only: [:index, :create, :destroy]
   # get 'friend_ship/Friends'
