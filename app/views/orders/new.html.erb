@@ -54,43 +54,7 @@
 
   <div class="friends_container col-xs-6" id="right">
     <div id="friend_div" class="row">
-      <div class="friend col-xs-6 ">
-        
-        <div class="row">
 
-          <div class="col-xs-6">
-            <div>
-              <img src="" width="70" height="70">
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div>
-              <h3>Ahmed</h3>
-              <a href="#">remove </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="friend col-xs-6 ">
-        
-        <div class="row">
-
-          <div class="col-xs-6">
-            <div>
-              <img src="" width="70" height="70">
-            </div>
-          </div>
-          <div class="col-xs-6">
-            <div>
-              <h3>Ahmed</h3>
-              <a href="#">remove </a>
-            </div>
-          </div>
-        
-        </div>
-
-      </div>
 
     </div>
   </div>
@@ -115,8 +79,10 @@
                   let f_div = document.createElement('div');
                   f_div.classList.add("friend");
                   f_div.classList.add("col-md-3");
+                  f_div.id = value;
                   f_div.innerHTML = "<div><img src=\"\" width=\"100\" height=\"100\"></div>";
-                  f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
+                  f_div.innerHTML += "<div> <h3><%= friend.name %></h3><button onClick=\"rm("+
+                      value +", 1)\">Remove</button></div>";
                   let dd = document.getElementById("friend_div");
                   dd.appendChild(f_div);
                   m_f.push(value);
@@ -127,14 +93,14 @@
               <% @user_group.each do |u_g| %>
               if (value == <%= u_g.group_id %>) {
                   <% @friends.each do |friend| %>
-                  console.log(<%= friend.id %>);
                   if (<%= u_g.user_id %> == <%= friend.id %>) {
-                      console.log("qwdqofejgropu");
                       let f_div = document.createElement('div');
                       f_div.classList.add("friend");
                       f_div.classList.add("col-md-3");
+                      f_div.id = value;
                       f_div.innerHTML = "<div><img src=<%= friend.image || "" %> width=\"100\" height=\"100\"></div>";
-                      f_div.innerHTML += "<div> <h3><%= friend.name %></h3> <a href=\"#\">remove</a></div>";
+                      f_div.innerHTML += "<div> <h3><%= friend.name %></h3><button onClick=\"rm("+
+                          value +", 1)\">Remove</button></div>";
                       let dd = document.getElementById("friend_div");
                       dd.appendChild(f_div);
                       m_f.push(value);
@@ -144,6 +110,27 @@
               }
               <%end%>
           }
+      },
+      onRemove: function (value, text, choice) {
+          rm(value, 0);
       }
+
       });
+  function rm(value, x) {
+      let removed_f = document.getElementById(value);
+      if(removed_f) {
+          removed_f.parentElement.removeChild(removed_f);
+      }
+      for (let i = 0; i < m_f.length; i++) {
+          if(m_f == value){
+              m_f.splice(i, 1);
+          }
+      }
+      hidden_input.value = m_f;
+      if(x == 1){
+          $("a[data-value='" + value +"']").remove();
+          $("div[data-value='" + value +"']").removeClass("active");
+          $("div[data-value='" + value +"']").removeClass("filtered");
+      }
+  }
 </script>

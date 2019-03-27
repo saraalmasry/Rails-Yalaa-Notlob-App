@@ -35,7 +35,7 @@
     <div style="float: right">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-bell fa-lg"></i>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -67,7 +67,17 @@
 
 
 <script>
+  let cnt=0;
+  let update = () => {
+    cnt++;
+    if(cnt == 4)
+    {
+        fetch("/notification_mark/");
+    }
+  }
+
     let notification_menu = document.getElementsByClassName("dropdown-menu")[0];
+
     fetch("/notifications/").then((data)=>{
         return data.json();
     }).then((data)=>{
@@ -116,8 +126,6 @@
       if(notifications.length == 0) {
           notification_menu.innerHTML = "<div>No Notification Available</div>";
       }
-    }).then(()=>{
-
-        })
+    });
     }, 40000);
 </script>

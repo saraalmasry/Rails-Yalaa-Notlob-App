@@ -61,6 +61,7 @@ end
 
   def show
     @order = Order.find(params[:id])
+    @invited_friends = InvitedFriend.where(order_id: params[:id]);
   end
 
   def destroy
@@ -71,10 +72,10 @@ end
 
 def create
     @order = Order.new(order_params)
+    myfriends_ids = params["myfriends_ids"].split(",").map { |s| s.to_i }
+    @order.join = myfriends_ids.length
     @order.save
     puts @order.inspect
-
-    myfriends_ids = params["myfriends_ids"].split(",").map { |s| s.to_i }
 
     myfriends_ids.each do |myfriend_id|
       @notification = Notification.create(:body => current_user.name + " invited you to his order",
