@@ -38,38 +38,41 @@ class FriendShipController < ApplicationController
   def create
    
     if User.exists?(email: params[:email])
-       @creator_id= current_user.id
-      #for testing 
+        if 
+          params[:email]== current_user.email
+          flash[:danger] = "You can't add yourself as a friend ^_^"
+          redirect_to :action => "index"
+        else
+          @creator_id= current_user.id
       
-      #  @creator_id= 1
-      @myfriend_id=User.find_by_email!(params[:email]).id
-      @friend_ship=FriendShip.new( creator_id: @creator_id,myfriend_id: @myfriend_id)
-      if FriendShip.where(creator_id: @creator_id,myfriend_id: @myfriend_id).exists? ||
-        FriendShip.where(creator_id:  @myfriend_id ,myfriend_id: @creator_id).exists?
-        flash[:danger] = "this friend already exists"
-        redirect_to :action => "index"
-      else 
+          @myfriend_id=User.find_by_email!(params[:email]).id
+          @friend_ship=FriendShip.new( creator_id: @creator_id,myfriend_id: @myfriend_id)
+          if FriendShip.where(creator_id: @creator_id,myfriend_id: @myfriend_id).exists? ||
+            FriendShip.where(creator_id:  @myfriend_id ,myfriend_id: @creator_id).exists?
+            flash[:danger] = "this friend already exists"
+            redirect_to :action => "index"
+          else 
 
-        if @friend_ship.save
-          puts "ok"
-          flash[:success] = "Your friend has been added."
-          redirect_to :action => "index"
-        else 
-          puts "no"
-          flash[:danger] = "an error happened please try again"
-          redirect_to :action => "index"
-        end
-        @friend_ship.errors.full_messages 
+            if @friend_ship.save
+              puts "ok"
+              flash[:success] = "Your friend has been added."
+              redirect_to :action => "index"
+            else 
+              puts "no"
+              flash[:danger] = "an error happened please try again"
+              redirect_to :action => "index"
+            end
+            @friend_ship.errors.full_messages 
 
-
-
-      end   
+          end  
+          
+        end   
       
     else
       flash[:danger] = "this email does not exist"
       redirect_to :action => "index"
     end   
-    #  puts params[:email]
+
 
   end  
 
