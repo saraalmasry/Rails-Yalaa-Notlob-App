@@ -1,6 +1,3 @@
-<%= render 'layouts/navigation' %>
-
-
 
 <div class="goupePage container text-center">
  <h1> Groups </h1>
@@ -51,7 +48,7 @@
    <div class="row">
      <div class="col-md-12">
      <%= form_with scope: :group_member , :class => "form-group" , url: groups_user_index_path do |form|  %>
-      
+
       <%= form.email_field :email , :class => "form-control group-input" , :placeholder => "Enter Friend Email" %>
       <%= hidden_field_tag "group_member[group_id]", "#{@groupId}" %>
       <%= form.submit "Add" , :class => "btn btn-primary" %>
@@ -87,4 +84,3 @@
 
  </div>
 </div>
-
