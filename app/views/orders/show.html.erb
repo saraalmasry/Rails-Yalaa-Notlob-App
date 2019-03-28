@@ -24,9 +24,10 @@
       </table>
     </div>
     <div class="col-md-4">
-
+     <a href="#" class = "invited-friend-link" >
       <h2><%= @invited_friends.count %> | invited friends</h2>
-      <div class="row">
+      </a>
+      <div class="invited-friend animated">
         <% @invited_friends.each do |invited_friend| %>
           <div class="col-md-3">
             <div>
@@ -58,14 +59,13 @@
         <%= render 'user_orders/form' %>
       <% end %>
     </div>
-    <div id="joined_friends" class="col-md-2">
-      <h2 id="h2"><%= @order.joined %> | joined friends</h2>
-      <div id="row" class="row"></div>
-      <%= image_tag(@order.menuImg,:width => 250, :height => 250)  %>
+    <div id="joined_friends" class="col-md-4">
+     <a class = "joined-friend-link" href="#" >
+      <h2 id="h2"><%= @order.joined %> | joined friends</h2></a>
+      <div id="row" class="joined"></div>
     </div>
-
   </div>
-
+    <%= image_tag(@order.menuImg,:class => "col-sm-6 menu-img")  %>
 </div>
 
 <script>
@@ -147,4 +147,17 @@
           });
       });
     }, 40000);
+
+    $('a.invited-friend-link').click(function (e) {
+       $('.invited-friend').fadeIn() ;
+      e.preventDefault();
+      // $('.invited-friend').classList.add('fadeOutUp') ;
+
+    })
+    $('a.joined-friend-link').click(function (e) {
+       $('.joined').fadeIn() ;
+      e.preventDefault();
+      // $('.invited-friend').classList.add('fadeOutUp') ;
+
+    })
 </script>
