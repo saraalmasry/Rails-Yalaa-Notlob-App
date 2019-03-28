@@ -15,11 +15,11 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: sql9284545
-  password: Aw3uQQrVxZ
+  username: sql2285636
+  password: cF9!qT1!
   socket: 3306
-  host: sql9.freemysqlhosting.net
-  database: sql9284545
+  host: sql2.freemysqlhosting.net
+  database: sql2285636
 
 
 # Local DB Info
@@ -34,7 +34,7 @@ default: &default
 development:
   <<: *default
   # database: yalla_development
-  database: sql9284545
+  database: sql2285636
 
 
 # Warning: The database defined as "test" will be erased and
@@ -43,7 +43,7 @@ development:
 test:
   <<: *default
   # database: yalla_test
-  database: sql9284545
+  database: sql2285636
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -67,8 +67,8 @@ test:
 production:
   <<: *default
   # database: yalla_production
-  database: sql9284545
+  database: sql2285636
   # username: yalla
-  username: sql9284545
+  username: sql2285636
   # password: <%= ENV['YALLA_DATABASE_PASSWORD'] %>
-  password: Aw3uQQrVxZ
+  password: cF9!qT1!
