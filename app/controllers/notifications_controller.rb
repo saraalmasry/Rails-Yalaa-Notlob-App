@@ -43,6 +43,6 @@ class NotificationsController < ApplicationController
 
 
   def list
-    @notification = Notification.where(:reciever_id => current_user.id)
+    @notification = Notification.where(:reciever_id => current_user.id).reverse
   end
 end
