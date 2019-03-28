@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-8">
       <h2>Order Details</h2>
-      <table class="table" style="border: 1px solid #f8f9fa;" >
+      <table class="table">
         <thead>
         <tr>
           <th>Person</th>
@@ -28,9 +28,23 @@
       <div class="row">
         <% @invited_friends.each do |invited_friend| %>
           <div class="col-md-6">
-            <div><img src="<%= invited_friend.user.image %>"></div>
+            <div>
+              <% if invited_friend.user.image %>
+                <img src="<%= invited_friend.user.image %>" width="50" height="50">
+              <% else %>
+                <%=image_tag 'user.png',:width => 50, :height => 50%>
+              <% end %>
+            </div>
             <div><%= invited_friend.user.name %></div>
-            <div><a href="">remove</a></div>
+            <% if @order.status == "waiting" && @order.user_id == current_user.id && invited_friend.acceptStatus == "waiting" %>
+              <div>
+                <%= link_to 'Remove',
+                            invited_friend_path(invited_friend),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
+
           </div>
         <% end %>
       </div>
@@ -62,6 +76,39 @@
 
     var row = document.getElementById("row");
 
+
+    fetch("/notification_join/"+ q[4]).then((data)=>{
+        return data.json();
+    }).then((data) =>{
+        row.innerHTML = "";
+        var user_joined = JSON.parse(JSON.stringify(data));
+        h.innerHTML = user_joined.length + " | joined friends";
+        user_joined.forEach((joined)=>{
+            var col = document.createElement('div');
+            col.classList.add("col-md-6");
+            var im_div = document.createElement('div');
+
+            if(!joined.image) {
+                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
+            } else {
+                var img = document.createElement('img');
+                img.src = joined.image;
+                im_div.appendChild(img);
+            }
+            var name_div = document.createElement('div');
+            name_div.innerHTML = joined.name;
+            var rm_div = document.createElement('div');
+            var rm_link = document.createElement('a');
+            rm_link.href = "";
+            rm_div.appendChild(rm_link);
+            col.appendChild(im_div);
+            col.appendChild(name_div);
+            col.appendChild(rm_div);
+            row.appendChild(col);
+        });
+    });
+
+
     setInterval(()=>{
       fetch("/notification_join/"+ q[4]).then((data)=>{
           return data.json();
@@ -73,9 +120,14 @@
             var col = document.createElement('div');
             col.classList.add("col-md-6");
             var im_div = document.createElement('div');
-            var img = document.createElement('img');
-            img.src = joined.image;
-            im_div.appendChild(img);
+
+            if(!joined.image) {
+                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
+            } else {
+                var img = document.createElement('img');
+                img.src = joined.image;
+                im_div.appendChild(img);
+            }
             var name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
             var rm_div = document.createElement('div');

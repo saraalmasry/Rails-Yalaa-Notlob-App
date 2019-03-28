@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :notifications
 
+  resources :invited_friends
+
   get 'notification_list' => "notifications#list"
 
   get '/users/sign_up'

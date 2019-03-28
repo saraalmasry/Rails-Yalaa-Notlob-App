@@ -45,10 +45,12 @@
                    %>
 
       </td>
-      <td style="width: 4%"> <%= link_to 'Cancel',
+      <td style="width: 4%">
+        <%= link_to 'Cancel',
       order_path(order),
                   method: :delete,
-                  data: { confirm: 'Are you sure?' } %>  </td>
+                  data: { confirm: 'Are you sure?' } %>
+      </td>
        <% end %>
     </tr>
 
