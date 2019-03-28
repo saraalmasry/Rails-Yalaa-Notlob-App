@@ -13,10 +13,10 @@
 <table class=" table table-striped vertical-center tableList" >
 
   <thead>
-  
+
     <tr>
       <th>Notifications</th>
-      
+
 
     </tr>
   </thead>
@@ -26,15 +26,18 @@
  <% @notification.each do |note| %>
     <tr>
       <td><%= note.body %> <a href="/orders/<%=note.order_id%>"> check order</a> </td>
-      
-      
+
+
     </tr>
-   
+
     <% end %>
-    
+
 
  </tbody>
  </table>
- 
 
+
+ </div>
+ <div class="flickr_pagination">
+ <%= will_paginate @notification, previous_label:'<', next_label:'>' ,renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0%>
  </div>
