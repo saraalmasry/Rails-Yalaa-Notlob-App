@@ -160,3 +160,19 @@ border-color: #11898e
 input.form-control::placeholder {
   color: cornsilk ;
 }
+// Notefications 
+
+.badge {
+  position: absolute;
+  top: 4px;
+  right: 2px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  background: red;
+  color: white;
+}
+
+.nav-item.dropdown{
+  margin-right: 1% ;
+}
+
