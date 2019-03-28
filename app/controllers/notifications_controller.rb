@@ -7,10 +7,10 @@ class NotificationsController < ApplicationController
 
   def join
     users = User.all
-    myjoinedFriends = InvitedFriend.where(order_id: params[:id], status: "joined")
+    myjoinedFriends = InvitedFriend.where(order_id: params[:id], acceptStatus: "joined")
     @joined_friends = []
     myjoinedFriends.each do |myjoinedFriend|
-      @joined_friends.append(users.find(myjoinedFriends.user_id))
+      @joined_friends.append(users.find(myjoinedFriend.user_id))
     end
     render :json => @joined_friends
   end
@@ -27,6 +27,7 @@ class NotificationsController < ApplicationController
 
     order = Order.find(params[:id])
     order.increment(:joined)
+    order.save
   end
 
 
