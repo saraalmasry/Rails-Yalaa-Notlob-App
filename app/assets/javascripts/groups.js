@@ -6,5 +6,8 @@ $(document).ready(function () {
 $(".Add-user").click(function (){
   $(".groupMembers").css("display: block") ; 
   $(".groupMembers").classList.add("fadeOutUp") ;
+}) ; 
+$(".fa-bell").click(function () {
+  $(".badge").hide() ; 
 })
 })
