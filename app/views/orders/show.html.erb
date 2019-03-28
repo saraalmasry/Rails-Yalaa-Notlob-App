@@ -36,7 +36,15 @@
               <% end %>
             </div>
             <div><%= invited_friend.user.name %></div>
-            <div><a href="">remove</a></div>
+            <% if @order.status == "waiting" && @order.user_id == current_user.id && invited_friend.acceptStatus == "waiting" %>
+              <div>
+                <%= link_to 'Remove',
+                            invited_friend_path(invited_friend),
+                            method: :delete,
+                            data: { confirm: 'Are you sure?' } %>
+              </div>
+            <% end %>
+
           </div>
         <% end %>
       </div>
