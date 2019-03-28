@@ -27,13 +27,13 @@ body {
   background-attachment: fixed !important;
 }
 hr {
-  background: cornsilk  ; 
+  background: cornsilk  ;
   width : 20%  ;
   height: 5px !important;
   border-radius: 12px  ;
 }
 .table-info a {
-  color : #333 !important ; 
+  color : #333 !important ;
 }
 .table-info a:hover{
   color : #11898e !important ;
@@ -90,7 +90,7 @@ hr {
 
 }
 .form-background{
-    
+
  //   background-image: url("3.png") !important;
     background-repeat:no-repeat;
     background-size:cover;
@@ -121,13 +121,13 @@ a.navbar-brand{
 
 // application fonts
 h1  {
-    font-family: 'Righteous', cursive !important; 
+    font-family: 'Righteous', cursive !important;
     font-size: 3rem !important;
 }
 
 h3{
   font-family: 'Baloo Chettan' , cursive !important;
-  font-size : 2rem !important ; 
+  font-size : 2rem !important ;
 }
 
 // primary colors
@@ -151,7 +151,16 @@ input.btn.btn-primary:hover , .btn-primary:hover {
 .table thead th{
   border-bottom: #11898e ;
 }
+table.tableList.table th , table.tableList.table td , table.tableList.table td a {
+  color:cornsilk ;
+}
+table.tableList.table th {
+  border : 3px solid  #11898e ;
+}
+table.tableList.table td {
+  border : 1px solid  #11898e ;
 
+}
 // inputs
 input.form-control {
 background-color: transparent ;
@@ -160,7 +169,7 @@ border-color: #11898e
 input.form-control::placeholder {
   color: cornsilk ;
 }
-// Notefications 
+// Notefications
 
 .badge {
   position: absolute;
@@ -175,4 +184,3 @@ input.form-control::placeholder {
 .nav-item.dropdown{
   margin-right: 1% ;
 }
-
