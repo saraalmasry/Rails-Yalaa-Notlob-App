@@ -30,24 +30,24 @@
       <li class="nav-item">
         <a class="nav-link" href="/orders_list">Orders</a>
       </li>
-      <li class="nav-item dropdown">
-        <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-bell fa-lg"></i>
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-        </div>
-      </li>
+<!--      <li class="nav-item dropdown">-->
+<!--        <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--          <i class="fas fa-bell fa-lg"></i>-->
+<!--        </a>-->
+<!--        <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--        </div>-->
+<!--      </li>-->
     </ul>
 
     <div style="float: right">
       <ul class="navbar-nav mr-auto">
-<!--        <li class="nav-item dropdown">-->
-<!--          <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-<!--            <i class="fas fa-bell fa-lg"></i>-->
-<!--          </a>-->
-<!--          <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
-<!--          </div>-->
-<!--        </li>-->
+        <li class="nav-item dropdown">
+          <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-bell fa-lg"></i>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          </div>
+        </li>
 
         <li class="nav-item">
         <%= if current_user.image?

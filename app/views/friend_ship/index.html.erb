@@ -3,6 +3,7 @@
 <div class="container">
 
   <h1 class = "text-center">Friends</h1>
+  <hr>
 
   <div class="content">
 
@@ -29,7 +30,7 @@
 
     <div class="scrollable p-4 rounded border">
 
-      <div><h3>Your Friends</h3>
+      <div><h3 class="text-center">Your Friends</h3>
         <hr>
       </div>
 
@@ -55,7 +56,7 @@
                 <strong class="text-gray-dark " style=" font-size: 20px;"><%= friend.name %></strong>
                 <%# <a href="#">Unfriend</a> %>
                 <span style=" font-size: 20px;">
-           <%= link_to 'Unfriend',
+                  <%= link_to 'Unfriend',
                        friend_ship_path(friend),
                        method: :delete,
                        data: {confirm: 'Are you sure?'} %>
