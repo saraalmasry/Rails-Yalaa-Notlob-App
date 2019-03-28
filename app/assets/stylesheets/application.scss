@@ -21,16 +21,18 @@
 // @import "font-awesome";
 
 body {
-  background-image: url("burger.jpg")  !important;
+  background-image: url("5.png")  !important;
+  background-repeat:no-repeat;
+    background-size:cover;
 }
 .shadow{
   background: rgba(0,0,0,0.7) ;
-  height: 100% ;
-  padding-top: 50px ;
+  height: 100vh ;
+  padding-top: 21vh ;
   color : cornsilk ;
 }
 .btn-primary{
-    background-color: #dd3d44;
+    background-color: #11898e;
 }
 
 .login-form{
@@ -43,8 +45,8 @@ body {
     padding-left:10px;
     border-radius: 15px 50px;
 
-    background: rgba(71, 87, 72, 0.3);
-    margin: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    width: 40%;
 
 }
 // social login form
@@ -58,15 +60,18 @@ body {
     padding-right:10px;
     padding-left:10px;
     border-radius: 15px 50px;
+    width: 40%;
+    background: rgba(0, 0, 0, 0.7);
+   
+}
+.login-form .btn-primary , .reg-form .btn-primary {
+  margin-left: 51%;
+  width: 100%;
 
-    background: rgba(71, 87, 72, 0.3);
-    margin: 30px;
 }
 .form-background{
-    padding-right:30%;
-    padding-left:30%;
-    padding-top:20px;
-    background-image: url("5.png");
+    
+    background-image: url("3.png") !important;
     background-repeat:no-repeat;
     background-size:cover;
 
@@ -79,7 +84,7 @@ body {
     color: cornsilk
 }
 .bg-dark {
-  background-color: #dd3d44 !important ;
+  background-color: #11898e !important ;
 
 }
 
@@ -92,9 +97,15 @@ h1 , h3 {
 // primary colors
 
 input.btn.btn-primary , .btn-primary{
-    background-color: #dd3d44;
+    background-color: transparent;
+    border : 3px solid #11898e ;
+    transition: 1s ; 
+    border-radius: 5px; 
 }
-
+input.btn.btn-primary:hover , .btn-primary:hover {
+  background-color: #11898e ; 
+  border-color: cornsilk ;  
+}
 
 // order
 // orders table
@@ -102,5 +113,14 @@ input.btn.btn-primary , .btn-primary{
   color : cornsilk ;
 }
 .table thead th{
-  border-bottom: #dd3d44 ;
+  border-bottom: #11898e ;
+}
+
+// inputs 
+input.form-control {
+background-color: transparent ;
+border-color: #11898e
+}
+input.form-control::placeholder {
+  color: cornsilk ;
 }

@@ -80,10 +80,10 @@
             }
 
 
-            let name_div = document.createElement('div');
+            var name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
-            let rm_div = document.createElement('div');
-            let rm_link = document.createElement('a');
+            var rm_div = document.createElement('div');
+            var rm_link = document.createElement('a');
             rm_link.href = "";
             rm_div.appendChild(rm_link);
             col.appendChild(im_div);
@@ -97,19 +97,19 @@
           return data.json();
       }).then((data) =>{
           row.innerHTML = "";
-          let user_joined = JSON.parse(JSON.stringify(data));
+          var user_joined = JSON.parse(JSON.stringify(data));
           h.innerHTML = user_joined.length + " | joined friends";
             user_joined.forEach((joined)=>{
-            let col = document.createElement('div');
+            var col = document.createElement('div');
             col.classList.add("col-md-6");
-            let im_div = document.createElement('div');
-            let img = document.createElement('img');
+            var im_div = document.createElement('div');
+            var img = document.createElement('img');
             img.src = joined.image;
             im_div.appendChild(img);
-            let name_div = document.createElement('div');
+            var name_div = document.createElement('div');
             name_div.innerHTML = joined.name;
-            let rm_div = document.createElement('div');
-            let rm_link = document.createElement('a');
+            var rm_div = document.createElement('div');
+            var rm_link = document.createElement('a');
             rm_link.href = "";
             rm_div.appendChild(rm_link);
             col.appendChild(im_div);
