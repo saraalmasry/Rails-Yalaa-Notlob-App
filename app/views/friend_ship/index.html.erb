@@ -55,7 +55,7 @@
                 <strong class="text-gray-dark " style=" font-size: 20px;"><%= friend.name %></strong>
                 <%# <a href="#">Unfriend</a> %>
                 <span style=" font-size: 20px;">
-           <%= link_to 'Unfriend',
+                  <%= link_to 'Unfriend',
                        friend_ship_path(friend),
                        method: :delete,
                        data: {confirm: 'Are you sure?'} %>
