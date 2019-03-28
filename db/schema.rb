@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_080007) do
+ActiveRecord::Schema.define(version: 2019_03_28_121801) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_080007) do
     t.string "first_name"
     t.string "last_name"
     t.datetime "oauth_expires_at"
-    t.string "image"
+    t.string "image", default: "https://www.autourdelacom.fr/wp-content/uploads/2018/03/default-user-image.png"
   end
 
   add_foreign_key "friend_ships", "users", column: "creator_id"

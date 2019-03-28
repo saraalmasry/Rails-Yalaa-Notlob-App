@@ -43,6 +43,6 @@ class NotificationsController < ApplicationController
 
 
   def list
-    @notification = Notification.where(:reciever_id => current_user.id).reverse
+    @notification = Notification.where(:reciever_id => current_user.id).reverse.paginate(page: params[:page], per_page: 5)
   end
 end

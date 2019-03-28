@@ -43,9 +43,10 @@
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown">
           <a onclick="update()" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-bell fa-lg"></i>
+            <i class="fas fa-bell fa-2x"></i>
+            <span class="badge"></span>
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           </div>
         </li>
 
@@ -82,14 +83,15 @@
         fetch("/notification_mark/");
     }
   }
-
     var notification_menu = document.getElementsByClassName("dropdown-menu")[0];
+    var notfNum = document.getElementsByClassName("badge")[0];
 
     fetch("/notifications/").then((data)=>{
 
         return data.json();
     }).then((data)=>{
     var notifications = JSON.parse(JSON.stringify(data));
+    notfNum.innerHTML = notifications.length ;
 
         if(notifications.length == 0) {
             notification_menu.innerHTML = "";
@@ -123,6 +125,7 @@
         return data.json();
     }).then((data)=>{
         var notifications = JSON.parse(JSON.stringify(data));
+        notfNum.innerHTML = notifications.length ;
         if(notifications.length == 0) {
             notification_menu.innerHTML = "";
             notification_menu.innerHTML = "<div class='dropdown-item'>No Notification Available</div>";
@@ -151,4 +154,13 @@
         }
       });
     }, 40000);
+
+    $(document).ready(function () { 
+
+    $(".fa-bell").click(function () {
+        $(".badge").hide() ; 
+      })
+})
 </script>
+
+
