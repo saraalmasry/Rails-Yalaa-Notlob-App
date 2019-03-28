@@ -52,9 +52,9 @@ def list
     @userOrders= InvitedFriend.select("distinct invited_friends.user_id").joins("INNER JOIN orders ON invited_friends.order_id = orders.id").count
     # FriendShip.where("creator_id = ? AND myfriend_id =  ?" ,current_user.id , friendId)
     # @userOrders= InvitedFriend.where(order_id: @orders.pluck("id"))
-  
+
     # order.update(joined: @nOfJoined)
- end 
+ end
 
 
   def show
@@ -73,6 +73,10 @@ def list
     @friends = FriendShip.where(creator_id: @order.user_id)
     @friends1 = FriendShip.where(myfriend_id: @order.user_id)
     flag = false
+    if @order.user_id == current_user.id
+      flag = true
+      @invited_user = true
+    end
     @friends.each do |f|
       if f.myfriend_id == current_user.id
         flag = true

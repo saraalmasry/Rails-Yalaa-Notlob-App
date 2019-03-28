@@ -29,7 +29,7 @@
       </a>
       <div class="invited-friend animated">
         <% @invited_friends.each do |invited_friend| %>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <div>
               <% if invited_friend.user.image %>
                 <img src="<%= invited_friend.user.image %>" width="50" height="50">
@@ -64,7 +64,9 @@
       <h2 id="h2"><%= @order.joined %> | joined friends</h2></a>
       <div id="row" class="joined"></div>
     </div>
+
   </div>
+
 </div>
 
 <script>
