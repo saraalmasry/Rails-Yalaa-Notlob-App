@@ -24,8 +24,10 @@
       </table>
     </div>
     <div class="col-md-4">
+     <a href="#" class = "invited-friend-link" > 
       <h2><%= @invited_friends.count %> | invited friends</h2>
-      <div class="row">
+      </a>
+      <div class="invited-friend animated">
         <% @invited_friends.each do |invited_friend| %>
           <div class="col-md-6">
             <div>
@@ -58,8 +60,9 @@
       <% end %>
     </div>
     <div id="joined_friends" class="col-md-4">
-      <h2 id="h2"><%= @order.joined %> | joined friends</h2>
-      <div id="row" class="row"></div>
+     <a class = "joined-friend-link" href="#" >
+      <h2 id="h2"><%= @order.joined %> | joined friends</h2></a>
+      <div id="row" class="joined"></div>
     </div>
   </div>
 </div>
@@ -143,4 +146,17 @@
           });
       });
     }, 40000);
+
+    $('a.invited-friend-link').click(function (e) {
+       $('.invited-friend').fadeIn() ;
+      e.preventDefault();
+      // $('.invited-friend').classList.add('fadeOutUp') ;   
+     
+    })
+    $('a.joined-friend-link').click(function (e) {
+       $('.joined').fadeIn() ;
+      e.preventDefault();
+      // $('.invited-friend').classList.add('fadeOutUp') ;   
+     
+    })
 </script>
