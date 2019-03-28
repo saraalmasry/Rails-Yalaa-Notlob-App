@@ -27,11 +27,6 @@ require 'will_paginate/array'
       group.user_id == current_user.id
     }
 
-    # @CurrentUserGroups.each do |c|
-    #   puts "==========================="
-    #   puts c.inspect
-    #   puts "==========================="
-    # end
 
     @user_group = []
     @CurrentUserGroups.each do |gg|
@@ -39,9 +34,7 @@ require 'will_paginate/array'
         @user_group.append(g_u)
       end
     end
-    # @friends = @friends.uniq
-    # @CurrentUserGroups = @CurrentUserGroups.uniq
-    # @user_group = @user_group.uniq
+
   end
 
   def index
@@ -78,9 +71,9 @@ def list
 def create
     @order = Order.new(order_params)
     myfriends_ids = params["myfriends_ids"].split(",").map { |s| s.to_i }
-    @order.join = myfriends_ids.length
+    @order.invited = myfriends_ids.length
     @order.save
-    puts @order.inspect
+
 
     myfriends_ids.each do |myfriend_id|
       @notification = Notification.create(:body => current_user.name + " invited you to his order",
@@ -109,7 +102,7 @@ def create
 
 private
   def order_params
-    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :join ).merge(:user_id => current_user.id )
+    params.require(:order).permit(:meal, :restaurant, :menuImg, :status, :invited ).merge(:user_id => current_user.id )
   end
 
 end

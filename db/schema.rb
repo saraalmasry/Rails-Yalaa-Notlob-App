@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_141755) do
+ActiveRecord::Schema.define(version: 2019_03_28_080007) do
 
   create_table "friend_ships", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
     t.bigint "creator_id"
@@ -67,10 +67,11 @@ ActiveRecord::Schema.define(version: 2019_03_26_141755) do
     t.string "restaurant"
     t.string "menuImg"
     t.string "status"
-    t.integer "join"
+    t.integer "invited"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "joined", default: 0
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

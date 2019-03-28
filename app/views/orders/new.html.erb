@@ -9,7 +9,7 @@
 
     <%= bootstrap_form_with(model: @order, local: true, :id => "order_form")  do |f| %>
 
-      <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"]], {}, {class: "form-control"} %>
+      <%= f.select :meal, [['Breakfast', "Breakfast"], ['Lunch', "Lunch"], ['Dinner', "Dinner"]], {}, {class: "form-control"} %>
 
       <%= f.text_field :restaurant  , label: "Restaurant", required: true %>
 
@@ -97,13 +97,19 @@
                       var f_div = document.createElement('div');
                       f_div.classList.add("friend");
                       f_div.classList.add("col-md-3");
-                      f_div.id = value;
-                      f_div.innerHTML = "<div><img src=<%= friend.image || "" %> width=\"100\" height=\"100\"></div>";
+                      f_div.id = <%= friend.id %>;
+
+                      <% if friend.image == nil %>
+                      f_div.innerHTML = "<div>" + `<%=image_tag 'user.png',:width => 50, :height => 50%>` + "</div>";
+                      <% else %>
+                      f_div.innerHTML = "<div>" + `<%= image_tag friend.image,:width => 50, :height => 50 %>` + "</div>";
+                      <%end %>
+
                       f_div.innerHTML += "<div> <h3><%= friend.name %></h3><button onClick=\"rm("+
                           value +", 1)\">Remove</button></div>";
                       var dd = document.getElementById("friend_div");
                       dd.appendChild(f_div);
-                      m_f.push(value);
+                      m_f.push(<%= friend.id %>);
                       hidden_input.value = m_f;
                   }
                   <% end %>
