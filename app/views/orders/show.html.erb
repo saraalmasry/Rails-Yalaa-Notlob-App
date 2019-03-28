@@ -1,7 +1,7 @@
 <%= render 'layouts/navigation' %>
 
 
-<div class="container">
+<div class="container-list-orders">
 
   <div class="row">
     <div class="col-md-8">
@@ -40,9 +40,9 @@
             <% if @order.status == "waiting" && @order.user_id == current_user.id && invited_friend.acceptStatus == "waiting" %>
               <div>
                 <%= link_to 'Remove',
-                            invited_friend_path(invited_friend),
-                            method: :delete,
-                            data: { confirm: 'Are you sure?' } %>
+                  invited_friend_path(invited_friend),
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' } %>
               </div>
             <% end %>
 
@@ -61,7 +61,7 @@
     <div id="joined_friends" class="col-md-2">
       <h2 id="h2"><%= @order.joined %> | joined friends</h2>
       <div id="row" class="row"></div>
-      <%= image_tag(@order.menuImg) %>
+      <%= image_tag(@order.menuImg,:width => 250, :height => 250)  %>
     </div>
 
   </div>
