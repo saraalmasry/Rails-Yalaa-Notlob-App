@@ -1,8 +1,8 @@
-<%#= render 'layouts/navigation' %>
-<body >
-<div>
+<%= render 'layouts/navigation' %>
 
-  <h1>Friends</h1>
+<div class="container">
+
+  <h1 class = "text-center">Friends</h1>
 
   <div class="content">
 
@@ -19,7 +19,7 @@
   <%= form_with  url: friend_ship_index_url , :html => { :method => :post } ,local: true do |form| %>
   <%= form.email_field :email ,class: "form-control col-sm-6" %>
   <br>
-  <%= form.submit %>
+  <%= form.submit "Add" , :class => "btn btn-primary" %>
   <% end %>
 
   
@@ -72,5 +72,5 @@
     </div>
   </div>
 </div>
-</body>
+
 

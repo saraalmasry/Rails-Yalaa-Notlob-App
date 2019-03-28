@@ -26,14 +26,14 @@
   data: {confirm: 'Are You Sure To delete Group' } %>
 
 
-      <%= link_to  ('<i class="fas fa-user-plus fa-2x"></i> ').html_safe , :id => group.id %>
+      <%= link_to  ('<i class="fas fa-user-plus fa-2x Add-user"></i> ').html_safe , :id => group.id %>
        </li>
        <hr />
         <% end %>
        </ul>
   </div>
 
-<div class="col-md-9 groupMembers">
+<div class="col-md-9 groupMembers animated <%= puts 'fadeOutUp' %> ">
  <% if @groupDetail != nil  %>
      <h3> <%= @groupDetail.name %> </h3>
      <hr />

@@ -8,14 +8,20 @@
 
 
 .myGroups , .groupMembers{
-  border:2px solid #eee ;
+  border:2px solid #11898e ;
   margin-top: 2% ;
   padding-top: 5% ;
   border-radius: 5px;
   overflow: auto
 }
+.groupMembers {
+  // display: none ;
+}
+.card {
+  color : #333 ;
+}
 .myGroups ul li a {
-  color: #333;
+  color: cornsilk;
   text-decoration: none ; 
   font-family: 'Muli', sans-serif;
 

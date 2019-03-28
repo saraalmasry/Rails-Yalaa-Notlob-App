@@ -3,4 +3,8 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready(function () {
   console.log("Work") ;
-  })
+$(".Add-user").click(function (){
+  $(".groupMembers").css("display: block") ; 
+  $(".groupMembers").classList.add("fadeOutUp") ;
+})
+})

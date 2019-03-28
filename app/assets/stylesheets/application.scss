@@ -25,9 +25,15 @@ body {
   background-repeat:no-repeat;
     background-size:cover;
 }
+.table-info a {
+  color : #333 !important ; 
+}
+.table-info a:hover{
+  color : #11898e !important ;
+}
 .shadow{
   background: rgba(0,0,0,0.7) ;
-  height: 100vh ;
+  min-height: 100vh ;
   padding-top: 21vh ;
   color : cornsilk ;
 }
@@ -71,7 +77,7 @@ body {
 }
 .form-background{
     
-    background-image: url("3.png") !important;
+ //   background-image: url("3.png") !important;
     background-repeat:no-repeat;
     background-size:cover;
 
@@ -90,8 +96,14 @@ body {
 
 
 // application fonts
-h1 , h3 {
-    font-family: 'Baloo Chettan', cursive;
+h1  {
+    font-family: 'Righteous', cursive !important; 
+    font-size: 3rem !important;
+}
+
+h3{
+  font-family: 'Baloo Chettan' , cursive !important;
+  font-size : 2rem !important ; 
 }
 
 // primary colors
