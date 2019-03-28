@@ -23,7 +23,7 @@ class NotificationsController < ApplicationController
                                         :not_type => 0, :status => 1, :reciever_id => params[:sender_id])
 
     joined_friend = InvitedFriend.where(:order_id => params[:id], :user_id => current_user.id)
-    joined_friend.update(status: "joined")
+    joined_friend.update(acceptStatus: "joined")
 
     order = Order.find(params[:id])
     order.increment(:joined)
