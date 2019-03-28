@@ -24,10 +24,11 @@
       </table>
     </div>
     <div class="col-md-4">
+
       <h2><%= @invited_friends.count %> | invited friends</h2>
       <div class="row">
         <% @invited_friends.each do |invited_friend| %>
-          <div class="col-md-6">
+          <div class="col-md-3">
             <div>
               <% if invited_friend.user.image %>
                 <img src="<%= invited_friend.user.image %>" width="50" height="50">
@@ -52,16 +53,19 @@
   </div>
   <div class="row">
     <div style="text-align: center" class="col-md-8">
-      <% if @order.status == "waiting" %>
+      <% if @order.status == "waiting" && @invited_user%>
         <h2>Add your order</h2>
         <%= render 'user_orders/form' %>
       <% end %>
     </div>
-    <div id="joined_friends" class="col-md-4">
+    <div id="joined_friends" class="col-md-2">
       <h2 id="h2"><%= @order.joined %> | joined friends</h2>
       <div id="row" class="row"></div>
+      <%= image_tag(@order.menuImg) %>
     </div>
+
   </div>
+
 </div>
 
 <script>
@@ -70,7 +74,9 @@
     var urlParams = new URLSearchParams(window.location.search);
     var q = url.split('/');
     if( index != -1) {
-        fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
+        fetch("/notification_add/" + q[4] +"/" + urlParams.get("join")).then(()=>{
+            document.location = "/orders/" + q[4];
+        });
     }
     var h = document.getElementById('h2');
 

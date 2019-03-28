@@ -52,14 +52,48 @@ def list
     @userOrders= InvitedFriend.select("distinct invited_friends.user_id").joins("INNER JOIN orders ON invited_friends.order_id = orders.id").count
     # FriendShip.where("creator_id = ? AND myfriend_id =  ?" ,current_user.id , friendId)
     # @userOrders= InvitedFriend.where(order_id: @orders.pluck("id"))
-  
+
     # order.update(joined: @nOfJoined)
- end 
+ end
 
 
   def show
     @order = Order.find(params[:id])
-    @invited_friends = InvitedFriend.where(order_id: params[:id]);
+    @invited_friends = InvitedFriend.where(order_id: params[:id])
+
+    @invited_user = false
+    @invited_friends.each do |invited|
+      if invited.user_id == current_user.id && invited.acceptStatus == "joined"
+        @invited_user = true
+        break
+      end
+    end
+
+
+    @friends = FriendShip.where(creator_id: @order.user_id)
+    @friends1 = FriendShip.where(myfriend_id: @order.user_id)
+    flag = false
+    if @order.user_id == current_user.id
+      flag = true
+      @invited_user = true
+    end
+    @friends.each do |f|
+      if f.myfriend_id == current_user.id
+        flag = true
+        break
+      end
+    end
+
+    @friends1.each do |f|
+      if f.creator_id == current_user.id
+        flag = true
+        break
+      end
+    end
+
+    if !flag
+      redirect_to orders_path
+    end
   end
 
   def destroy
@@ -76,7 +110,7 @@ def create
 
 
     myfriends_ids.each do |myfriend_id|
-      @notification = Notification.create(:body => current_user.name + " invited you to his order",
+      @notification = Notification.create(:body => current_user.name + " invited you to this order",
                                           :reciever_id => myfriend_id, :order_id => @order.id,
                                           :not_type => 1, :status => 1, :sender_id => current_user.id)
       @invited_friends = InvitedFriend.create(:user_id => myfriend_id, :order_id => @order.id,
