@@ -52,7 +52,7 @@
   </div>
   <div class="row">
     <div style="text-align: center" class="col-md-8">
-      <% if @order.status == "waiting" %>
+      <% if @order.status == "waiting" && @invited_user%>
         <h2>Add your order</h2>
         <%= render 'user_orders/form' %>
       <% end %>
@@ -70,7 +70,9 @@
     var urlParams = new URLSearchParams(window.location.search);
     var q = url.split('/');
     if( index != -1) {
-        fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
+        fetch("/notification_add/" + q[4] +"/" + urlParams.get("join")).then(()=>{
+            document.location = "/orders/" + q[4];
+        });
     }
     var h = document.getElementById('h2');
 
