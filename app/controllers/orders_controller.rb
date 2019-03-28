@@ -59,7 +59,35 @@ def list
 
   def show
     @order = Order.find(params[:id])
-    @invited_friends = InvitedFriend.where(order_id: params[:id]);
+    @invited_friends = InvitedFriend.where(order_id: params[:id])
+
+    # flag = false
+    # @invited_friends.each do |invited|
+    #   if invited.user_id == current_user.id
+    #     flag = true
+    #     break
+    #   end
+    # end
+    @friends = FriendShip.where(creator_id: current_user.id)
+    @friends1 = FriendShip.where(myfriend_id: current_user.id)
+    flag = false
+    @friends.each do |f|
+      if f.myfriend_id == current_user.id
+        flag = true
+        break
+      end
+    end
+
+    @friends1.each do |f|
+      if f.creator_id == current_user.id
+        flag = true
+        break
+      end
+    end
+
+    if !flag
+      redirect_to orders_path
+    end
   end
 
   def destroy
