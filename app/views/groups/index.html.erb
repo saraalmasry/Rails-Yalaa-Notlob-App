@@ -32,11 +32,12 @@
         <% end %>
        </ul>
   </div>
-
-<div class="col-md-9 groupMembers animated <%= puts 'fadeOutUp' %> ">
+<% if params[:id]  %>
+<div class="col-md-9 groupMembers animated bounceInRight ">
  <% if @groupDetail != nil  %>
      <h3> <%= @groupDetail.name %> </h3>
      <hr />
+
 
       <!-- Alerts if success of fail -->
    <% flash.each do |key, value| %>
@@ -77,6 +78,7 @@
 
      <% end %>
     </div>
+    <% end %> 
   </div>
 </div>
 
