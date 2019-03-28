@@ -15,7 +15,7 @@ class GroupsUserController < ApplicationController
       else
  flash[:danger] = " Sorry but you haven't any Friends with this email "
       end
-      redirect_to groups_path
+      redirect_to groups_path(params: { id: @groupId})
 
     end
 
