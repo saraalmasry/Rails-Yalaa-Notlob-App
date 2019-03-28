@@ -38,11 +38,13 @@
   </div>
   <div class="row">
     <div style="text-align: center" class="col-md-8">
-      <h2>Add your order</h2>
-      <%= render 'user_orders/form' %>
+      <% if @order.status == "waiting" %>
+        <h2>Add your order</h2>
+        <%= render 'user_orders/form' %>
+      <% end %>
     </div>
     <div id="joined_friends" class="col-md-4">
-      <h2 id="h2">0 | joined friends</h2>
+      <h2 id="h2"><%= @order.joined %> | joined friends</h2>
       <div id="row" class="row"></div>
     </div>
   </div>
@@ -51,7 +53,7 @@
 <script>
     var url = window.location.href;
     var index = url.indexOf('?join');
-    const urlParams = new URLSearchParams(window.location.search);
+    var urlParams = new URLSearchParams(window.location.search);
     var q = url.split('/');
     if( index != -1) {
         fetch("/notification_add/" + q[4] +"/" + urlParams.get("join"));
@@ -59,39 +61,7 @@
     var h = document.getElementById('h2');
 
     var row = document.getElementById("row");
-    fetch("/notification_join/"+ q[4]).then((data)=>{
-        return data.json();
-    }).then((data) => {
-        row.innerHTML = "";
-        var user_joined = JSON.parse(JSON.stringify(data));
-        h.innerHTML = user_joined.length + " | joined friends";
-        user_joined.forEach((joined) => {
-            var col = document.createElement('div');
-            col.classList.add("col-md-6");
-            var im_div = document.createElement('div');
-            if(!joined.image) {
-                im_div.innerHTML = `<%=image_tag 'user.png',:width => 50, :height => 50%>`;
-            }else {
-                var mmmmm = document.createElement('img');
-                mmmmm.src = joined.image;
-                mmmmm.style.width = 50+'px';
-                mmmmm.style.height= 50+'px';
-                im_div.appendChild(mmmmm);
-            }
 
-
-            var name_div = document.createElement('div');
-            name_div.innerHTML = joined.name;
-            var rm_div = document.createElement('div');
-            var rm_link = document.createElement('a');
-            rm_link.href = "";
-            rm_div.appendChild(rm_link);
-            col.appendChild(im_div);
-            col.appendChild(name_div);
-            col.appendChild(rm_div);
-            row.appendChild(col);
-        });
-    });
     setInterval(()=>{
       fetch("/notification_join/"+ q[4]).then((data)=>{
           return data.json();

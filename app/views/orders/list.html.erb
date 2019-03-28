@@ -31,12 +31,9 @@
      <tr>
       <td><%= order.meal %> </td>
       <td > <%= order.restaurant %>  </td>
-      <td style="width: 7%"><%= order.join %>  </td>
-      <td style="width: 7%">
+      <td style="width: 7%"><%= order.invited %>  </td>
+       <td style="width: 7%"><%= order.joined %>  </td>
 
-      <%=  @userOrders.inspect  %>
-
-      </td>
       <td><%= order.status %>  </td>
 
       <td style="width: 4%"> <%= link_to 'view', order_path(order) %> </td>

@@ -70,7 +70,7 @@
   var cnt=0;
   var update = () => {
     cnt++;
-    if(cnt == 4)
+    if(cnt == 12)
     {
         fetch("/notification_mark/");
     }
@@ -84,23 +84,30 @@
     }).then((data)=>{
     var notifications = JSON.parse(JSON.stringify(data));
 
-        notification_menu.innerText = "";
-        notifications.forEach((notification) =>{
-            var noti_div = document.createElement('div');
-            noti_div.classList.add("dropdown-item");
-            noti_div.innerHTML = notification.body;
-
-            if(notification.not_type === 0){
-                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
-            }
-            else if(notification.not_type === 1){
-                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "/?join="+
-                    notification.sender_id+"\">Join</a>";
-            }
-            notification_menu.appendChild(noti_div);
-        });
         if(notifications.length == 0) {
-            notification_menu.innerHTML = "<div>No Notification Available</div>";
+            notification_menu.innerHTML = "";
+            notification_menu.innerHTML = "<div class='dropdown-item'>No Notification Available</div>";
+            notification_menu.innerHTML += "<div class='dropdown-item'>";
+            notification_menu.innerHTML += "<a href=\"/notification_list/\">view all notifications</a></div>";
+        }
+        else {
+            notification_menu.innerHTML = "";
+            notifications.forEach((notification) =>{
+                var noti_div = document.createElement('div');
+                noti_div.classList.add("dropdown-item");
+                noti_div.innerHTML = notification.body;
+
+                if(notification.not_type == 0){
+                    noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+                }
+                else if(notification.not_type == 1){
+                    noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "/?join="+
+                        notification.sender_id+"\">Join</a>";
+                }
+                notification_menu.appendChild(noti_div);
+            });
+            notification_menu.innerHTML += "<div class='dropdown-item'>";
+            notification_menu.innerHTML += "<a href=\"/notification_list/\">view all notifications</a></div>";
         }
     });
 
@@ -108,26 +115,33 @@
         fetch("/notifications/").then((data)=>{
         return data.json();
     }).then((data)=>{
-        notifications = JSON.parse(JSON.stringify(data));
-        notification_menu.innerText = "";
-        notifications.forEach((notification) =>{
-
-        var noti_div = document.createElement('div');
-        noti_div.classList.add("dropdown-item");
-        noti_div.innerHTML = notification.body;
-
-        if(notification.not_type === 0){
-            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+        var notifications = JSON.parse(JSON.stringify(data));
+        if(notifications.length == 0) {
+            notification_menu.innerHTML = "";
+            notification_menu.innerHTML = "<div class='dropdown-item'>No Notification Available</div>";
+            notification_menu.innerHTML += "<div class='dropdown-item'>";
+            notification_menu.innerHTML += "<a href=\"/notification_list/\">view all notifications</a></div>";
         }
-        else if(notification.not_type === 1){
-            noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id
-            "/"+ notification.sender_id + "/?join=true\">Join</a>";
+        else {
+            notification_menu.innerHTML = "";
+            notifications.forEach((notification) =>{
+
+            var noti_div = document.createElement('div');
+            noti_div.classList.add("dropdown-item");
+            noti_div.innerHTML = notification.body;
+
+            if(notification.not_type == 0){
+                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id + "\">Order</a>";
+            }
+            else if(notification.not_type == 1){
+                noti_div.innerHTML += "<a href=\"/orders/" +notification.order_id
+                "/"+ notification.sender_id + "/?join=true\">Join</a>";
+            }
+            notification_menu.appendChild(noti_div);
+          });
+            notification_menu.innerHTML += "<div class='dropdown-item'>";
+            notification_menu.innerHTML += "<a href=\"/notification_list/\">view all notifications</a></div>";
         }
-        notification_menu.appendChild(noti_div);
-      });
-      if(notifications.length == 0) {
-          notification_menu.innerHTML = "<div>No Notification Available</div>";
-      }
     });
     }, 40000);
 </script>
