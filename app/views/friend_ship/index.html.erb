@@ -1,69 +1,76 @@
-<%= render 'layouts/navigation' %>
-
-
+<%#= render 'layouts/navigation' %>
+<body >
 <div>
 
-<h1>Friends</h1>
+  <h1>Friends</h1>
 
-<div class="content">
+  <div class="content">
 
-  <div class="addFrind">
-
-  <h4>Your friend email:</h4>
+  <div class="addFrind">  
+   
+  <h4>Your friend email:</h4>  
     <% flash.each do |key, value| %>
+    <%if key == 'success' ||  key == 'danger'%>
         <div class="alert alert-<%= key %>"><%= value %></div>
+    <%end%>    
+    
     <%end%>
-
+    
   <%= form_with  url: friend_ship_index_url , :html => { :method => :post } ,local: true do |form| %>
   <%= form.email_field :email ,class: "form-control col-sm-6" %>
   <br>
   <%= form.submit %>
   <% end %>
 
-  </div>
+  
+
+    </div>
 
 
+    <div class="scrollable p-4 rounded border">
 
+      <div><h3>Your Friends</h3>
+        <hr>
+      </div>
 
-<div class="scrollable p-4 rounded border">
-
-   <div><h3>Your Friends</h3><hr></div>
-
-  <div class=" row " >
-    <%@friends.each  do |friend|%>
-    <div class="col-sm-4">
-    <%# <svg class="bd-placeholder-img mr-2 rounded" width="50" height="50"
+      <div class=" row ">
+        <% @friends.each do |friend| %>
+          <div class="col-sm-4">
+            <%# <svg class="bd-placeholder-img mr-2 rounded" width="50" height="50"
      xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice"
      focusable="false" role="img" aria-label="Placeholder: 32x32"><title>Placeholder</title>
-     <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff"
+     <rect width="100%" height="100%" fill="#007bff"></rect><text x="50%" y="50%" fill="#007bff" 
      dy=".3em">32x32</text></svg> %>
 
 
-   <% if friend.image == nil %>
-       <%=image_tag "user.png",:width => 50, :height => 50%>
-        <% else %>
-      <%= image_tag friend.image,:width => 50, :height => 50 %>
-        <%end %>
+            <% if friend.image == nil %>
+              <%= image_tag "user.png", :width => 50, :height => 50 %>
+            <% else %>
+              <%= image_tag friend.image, :width => 50, :height => 50 %>
+            <% end %>
 
 
-      <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
-        <div class="d-flex justify-content-between align-items-center w-100">
-          <strong class="text-gray-dark " style=" font-size: 20px;" ><%=friend.name%></strong>
-          <%# <a href="#">Unfriend</a> %>
-        <span style=" font-size: 20px;">
+            <div class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+              <div class="d-flex justify-content-between align-items-center w-100">
+                <strong class="text-gray-dark " style=" font-size: 20px;"><%= friend.name %></strong>
+                <%# <a href="#">Unfriend</a> %>
+                <span style=" font-size: 20px;">
            <%= link_to 'Unfriend',
-                friend_ship_path(friend),
-                             method: :delete,
-                             data: { confirm: 'Are you sure?' } %>
+                       friend_ship_path(friend),
+                       method: :delete,
+                       data: {confirm: 'Are you sure?'} %>
         </span>
 
-        </div>
-        <%# <span class="d-block">@username</span> %>
+              </div>
+              <%# <span class="d-block">@username</span> %>
+            </div>
+          </div>
+        <% end %>
+
+
       </div>
     </div>
-    <%end%>
+  </div>
+</div>
+</body>
 
-  </div>
-</div>
-  </div>
-</div>

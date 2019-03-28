@@ -8,7 +8,7 @@
 </div>
 
 <div class="container list" >
-<%= link_to 'Add Order', new_order_path  , :class => "btn btn-primary" %>
+<%= link_to 'Add Order', new_order_path , :class => "btn btn-primary" %>
 
 <table class=" table table-striped vertical-center tableList" >
 
@@ -64,3 +64,6 @@
  <div class="flickr_pagination">
       <%= will_paginate @orders, previous_label:'<', next_label:'>' ,renderer: BootstrapPagination::Rails, inner_window: 1, outer_window: 0%>
   </div>
+<% console %>
+
+

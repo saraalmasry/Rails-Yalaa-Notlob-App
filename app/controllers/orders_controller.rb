@@ -55,8 +55,13 @@ require 'will_paginate/array'
 def list
     @orders = Order.where(:user => current_user.id).reverse.paginate(page: params[:page], per_page: 2)
     # @userOrders = UserOrder.find_by_sql("select count(distinct user_orders.user_id) from user_orders where user_orders.order_id = 5")
-    @userOrders= UserOrder.select("distinct user_orders.user_id").joins("INNER JOIN orders ON user_orders.order_id = orders.id").count
-end
+    # @orders.each do |order|
+    @userOrders= InvitedFriend.select("distinct invited_friends.user_id").joins("INNER JOIN orders ON invited_friends.order_id = orders.id").count
+    # FriendShip.where("creator_id = ? AND myfriend_id =  ?" ,current_user.id , friendId)
+    # @userOrders= InvitedFriend.where(order_id: @orders.pluck("id"))
+  
+    # order.update(joined: @nOfJoined)
+ end 
 
 
   def show
