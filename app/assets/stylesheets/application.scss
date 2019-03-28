@@ -22,8 +22,9 @@
 
 body {
   background-image: url("5.png")  !important;
-  background-repeat:no-repeat;
-    background-size:cover;
+  background-repeat: no-repeat !important;
+  background-size:cover !important;
+  background-attachment: fixed !important;
 }
 .table-info a {
   color : #333 !important ; 
@@ -68,7 +69,7 @@ body {
     border-radius: 15px 50px;
     width: 40%;
     background: rgba(0, 0, 0, 0.7);
-   
+
 }
 .login-form .btn-primary , .reg-form .btn-primary {
   margin-left: 51%;
@@ -94,6 +95,16 @@ body {
 
 }
 
+.name {
+  margin-top: 18px !important;
+  font-size: 18px !important;
+  margin-left: 3px;
+}
+
+a.navbar-brand{
+  margin-top: 3px;
+}
+
 
 // application fonts
 h1  {
@@ -111,12 +122,12 @@ h3{
 input.btn.btn-primary , .btn-primary{
     background-color: transparent;
     border : 3px solid #11898e ;
-    transition: 1s ; 
-    border-radius: 5px; 
+    transition: 1s ;
+    border-radius: 5px;
 }
 input.btn.btn-primary:hover , .btn-primary:hover {
-  background-color: #11898e ; 
-  border-color: cornsilk ;  
+  background-color: #11898e ;
+  border-color: cornsilk ;
 }
 
 // order
@@ -128,7 +139,7 @@ input.btn.btn-primary:hover , .btn-primary:hover {
   border-bottom: #11898e ;
 }
 
-// inputs 
+// inputs
 input.form-control {
 background-color: transparent ;
 border-color: #11898e

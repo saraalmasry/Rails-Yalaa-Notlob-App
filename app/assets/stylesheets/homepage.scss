@@ -2,7 +2,7 @@
     background-image: url("3.png");
     background-repeat:no-repeat;
     background-size:cover;
-    
+
    }
 
    .button {
@@ -19,13 +19,17 @@
     border-radius: 8px;
     font-size:20px;
     position:absolute;
-  
+
     top: 80%;
     left: 46%;
-    
+
   }
-  
+
   .button:hover {
-    background-color: 	#E9967A; 
+    background-color: 	#E9967A;
     color: white;
+  }
+  .col-sm{
+    max-height: 350px;
+    overflow: auto;
   }
