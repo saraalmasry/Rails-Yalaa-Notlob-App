@@ -61,15 +61,17 @@ def list
     @order = Order.find(params[:id])
     @invited_friends = InvitedFriend.where(order_id: params[:id])
 
-    # flag = false
-    # @invited_friends.each do |invited|
-    #   if invited.user_id == current_user.id
-    #     flag = true
-    #     break
-    #   end
-    # end
-    @friends = FriendShip.where(creator_id: current_user.id)
-    @friends1 = FriendShip.where(myfriend_id: current_user.id)
+    @invited_user = false
+    @invited_friends.each do |invited|
+      if invited.user_id == current_user.id && invited.acceptStatus == "joined"
+        @invited_user = true
+        break
+      end
+    end
+
+
+    @friends = FriendShip.where(creator_id: @order.user_id)
+    @friends1 = FriendShip.where(myfriend_id: @order.user_id)
     flag = false
     @friends.each do |f|
       if f.myfriend_id == current_user.id
@@ -104,7 +106,7 @@ def create
 
 
     myfriends_ids.each do |myfriend_id|
-      @notification = Notification.create(:body => current_user.name + " invited you to his order",
+      @notification = Notification.create(:body => current_user.name + " invited you to this order",
                                           :reciever_id => myfriend_id, :order_id => @order.id,
                                           :not_type => 1, :status => 1, :sender_id => current_user.id)
       @invited_friends = InvitedFriend.create(:user_id => myfriend_id, :order_id => @order.id,
