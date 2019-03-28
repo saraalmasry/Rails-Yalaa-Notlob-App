@@ -32,6 +32,13 @@ body {
 .table-info a:hover{
   color : #11898e !important ;
 }
+
+.table-warning, .table-warning > th, .table-warning > td {
+  background: transparent ;
+}
+.table-warning th, .table-warning td, .table-warning thead th, .table-warning tbody + tbody {
+  border-color : #11898e ;
+}
 .shadow{
   background: rgba(0,0,0,0.7) ;
   min-height: 100vh ;
