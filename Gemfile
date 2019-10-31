@@ -13,7 +13,7 @@ gem 'bootstrap-social-rails'
 gem 'activity_notification'
 
 gem "font-awesome-rails"
-gem 'devise', '~> 4.6', '>= 4.6.1'
+gem 'devise', '~> 4.7'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2', '>= 5.2.2.1'
